@@ -139,7 +139,7 @@
 	<!--<haxelib name="polymod"/> -->
 	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="hxvlc"/>
-	<haxelib name="extension-androidtools"
+	<haxelib name="extension-androidtools" />
 
 	<!-- <heh....just fixed this stupid import garbage so now we can more easily/dynamically change uis huzzah!/> -->
 	<haxeflag name="--macro" value="include('meta.ui')" />
