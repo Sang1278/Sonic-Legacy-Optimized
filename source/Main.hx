@@ -15,6 +15,7 @@ import openfl.text.TextFormat;
 import openfl.display.StageScaleMode;
 import meta.states.*;
 import meta.data.*;
+import meta.MacroData;
 import meta.backend.FPSCounter;
 
 class Main extends Sprite
@@ -136,10 +137,15 @@ class Main extends Sprite
 		FlxG.mouse.visible = false;
 		#end
 
+		var compTime = MacroData.getDate();
+		var time = Date.now().toString();
+		var usrName = #if windows Sys.environment()["USERNAME"]; #elseif (linux || macos) return Sys.environment()["USER"]; #end
+		var compUSR = MacroData.getUSR();
+
 		compilationInformation = new TextField();
 		compilationInformation.y = (FlxG.height / 4) * 3;
 		compilationInformation.defaultTextFormat = new TextFormat("_sans", 24, FlxColor.fromRGB(255, 125, 125));
-		compilationInformation.text = 'nice! Build Compilation Date:\nnice! Build open date:\nnice! Build Compiled by: nice!\nI know who you are.';
+		compilationInformation.text = 'nice! Build Compilation Date: ${compTime}\nnice! Build open date: ${time}\nnice! Build Compiled by: nice! ${compUSR}\nI know who you are. ${usrName}';
 		compilationInformation.multiline = true;
 		compilationInformation.selectable = false;
 		compilationInformation.autoSize = LEFT;
