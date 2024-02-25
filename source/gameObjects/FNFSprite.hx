@@ -174,18 +174,6 @@ class FNFSprite extends FlxSprite
 	public function getCharacterFile(character:String, ?mod:Bool = false){
 		var characterPath:String = 'characters/' + character + '.json';
 		var rawJson:Dynamic;
-
-		if(mod){
-			var path:String = Paths.modFolders(characterPath);
-			trace(':)');
-			if (!FileSystem.exists(path)) {
-				trace(':(  ${path}');
-				path = Paths.getPreloadPath(characterPath);
-			}
-
-			rawJson = File.getContent(path);
-
-		}else{
 			var path:String = Paths.getPreloadPath(characterPath);
 			if (!Assets.exists(path))
 			{
@@ -196,5 +184,4 @@ class FNFSprite extends FlxSprite
 		}
 
 		return cast Json.parse(rawJson);
-	}
 }
