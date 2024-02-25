@@ -63,7 +63,7 @@ class DesktopOptionsState extends MusicBeatState
         FlxG.cameras.add(display,false);
         display.zoom = 1;
         
-        var path = Paths.getContent(Paths.exists(Paths.modsShaderFragment('CRT')) ? Paths.modsShaderFragment('CRT') : Paths.shaderFragment('CRT'));
+        var path = Paths.getContent(Paths.exists(Paths.shaderFragment('CRT')) ? Paths.shaderFragment('CRT') : Paths.shaderFragment('CRT'));
         var crt = new FlxRuntimeShader(path);
         crt.setFloat('warp',3.5);
         ApplyShaderToCamera(crt,display);
