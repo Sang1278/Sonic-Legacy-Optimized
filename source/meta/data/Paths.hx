@@ -183,9 +183,11 @@ class Paths
 	{
 		return getPath('noteskins/$key', TEXT, library);
 	}
+	#if MODS_ALLOWED
 	inline static public function modsNoteskin(key:String){
 		return modFolders('noteskins/$key');
 	}
+#end
 
 	inline static public function shaderFragment(key:String, ?library:String)
 	{
@@ -215,7 +217,7 @@ class Paths
 		
 	}
 	inline static public function getContent(asset:String):Null<String>{
-		#if sys
+		#if desktop
 		if (FileSystem.exists(asset))
 			return File.getContent(asset);
 		#end
