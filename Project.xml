@@ -142,7 +142,7 @@
 	<haxelib name="extension-androidtools" />
 
 	<!-- <heh....just fixed this stupid import garbage so now we can more easily/dynamically change uis huzzah!/> -->
-	<!-- <haxeflag name="--macro" value="include('meta.ui')" /> -->
+	<haxeflag name="--macro" value="include('meta.ui')" />
 	
 	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
 
