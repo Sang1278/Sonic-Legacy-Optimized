@@ -118,7 +118,7 @@ class Generic {
 			Sys.println(errMsg);
 			Application.current.window.alert(errMsg, 'Error!');
 
-			System.exit(1);
+			//System.exit(1);
 		});
 	}
 	
