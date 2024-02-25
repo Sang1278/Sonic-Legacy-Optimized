@@ -41,6 +41,10 @@ class Main extends Sprite
 	{
 		super();
 
+   #if mobile
+   Generic.initCrashHandler();
+   #end
+
 		if (stage != null)
 		{
 			init();
@@ -76,6 +80,26 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
+
+		#if mobile
+		Generic.mode = ROOTDATA;
+
+		Sys.setCwd(haxe.io.Path.addTrailingSlash(Generic.returnPath())); // sets the default file system working directory, makes all File and FileSystem functions work without needing to use Generic.returnPath() everywhere
+
+		if (!FileSystem.exists('assets')) {
+			FileSystem.createDirectory('assets');
+		}
+
+		if (!FileSystem.exists('assets/videos')) {
+			FileSystem.createDirectory('assets/videos');
+		}
+
+		for (file in LimeAssets.list().filter(folder -> folder.startsWith('assets/videos'))){
+			if(file.endsWith(".mp4")) Generic.copyContent(file, file, true);
+		}
+
+		#end
+
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
@@ -94,9 +118,12 @@ class Main extends Sprite
 
 
 		ClientPrefs.loadDefaultKeys();
+		#if desktop
 		addChild(new FNFGame(gameWidth, gameHeight, initialState, #if(flixel < "5.0.0")zoom,#end framerate, framerate, skipSplash, startFullscreen));
+		#else
+  	addChild(new FNFGame(1280, 720, TitleState, 60, 60, true, false));
+  	#end
 
-		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
@@ -104,7 +131,6 @@ class Main extends Sprite
 		if(fpsVar != null) {
 			fpsVar.visible = ClientPrefs.data.showFPS;
 		}
-		#end
 
 		#if html5
 		FlxG.autoPause = false;
