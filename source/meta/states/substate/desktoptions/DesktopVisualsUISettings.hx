@@ -55,8 +55,7 @@ class DesktopVisualsUISettings extends DesktopBaseOptions
 		option.changeValue = 0.1;
 		option.decimals = 1;
 		addOption(option);
-		
-		#if !mobile
+
 		var option:DesktopOption = new DesktopOption('FPS Counter',
 			'If unchecked, hides FPS Counter.',
 			'showFPS',
@@ -64,7 +63,6 @@ class DesktopVisualsUISettings extends DesktopBaseOptions
 			true);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
-		#end
 		
 		var option:DesktopOption = new DesktopOption('Pause Screen Song:',
 			"What song do you prefer for the Pause Screen?",
