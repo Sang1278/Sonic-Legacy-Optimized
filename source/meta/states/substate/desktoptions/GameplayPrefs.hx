@@ -117,7 +117,7 @@ class GameplayPrefs extends MusicBeatSubstate
                 checkbox.setOffsets(300, 0);
                 checkboxGroup.add(checkbox);
 			} else {
-                var valueText:AttachedFlxText = new AttachedFlxText(optionText.x, optionText.y, '' + optionsArray[i].getValue(),);
+                var valueText:AttachedFlxText = new AttachedFlxText(optionText.x, optionText.y, '' + optionsArray[i].getValue());
                 valueText.setFormat(Paths.font("cmd.ttf"), 16, FlxColor.WHITE, LEFT);
                 valueText.setOffsets(300, 0);
 				valueText.sprTracker = optionText;
