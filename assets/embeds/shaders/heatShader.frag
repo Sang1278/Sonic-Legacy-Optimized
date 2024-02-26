@@ -1,7 +1,7 @@
 #pragma header
 uniform float iTime;
 //uniform vec2 pSize;
-const vec2 pSize = vec2(1,1);
+const vec2 pSize = vec2(1.,1.);
 // Simplex 2D noise
 //
 vec3 permute(vec3 x){return mod(((x*34.)+1.)*x,289.);}
@@ -53,8 +53,8 @@ void main()
     // Normalized pixel coordinates (from 0 to 1)
     vec2 uv=openfl_TextureCoordv;
     
-    float dx=.0033*snoise_octaves(uv*1.+iTime*vec2(.00323,.00345),5,.85,-3.,iTime*vec2(-.0323,-.345),1.203);
-    float dy=.0023*snoise_octaves(uv*2.+3.+iTime*vec2(-.00323,.00345),5,.85,-3.,iTime*vec2(-.0323,-.345),1.203);
+    float dx=.0033*snoise_octaves(uv*1.+iTime*vec2(.00323,.00345),5.,.85,-3.,iTime*vec2(-.0323,-.345),1.203);
+    float dy=.0023*snoise_octaves(uv*2.+3.+iTime*vec2(-.00323,.00345),5.,.85,-3.,iTime*vec2(-.0323,-.345),1.203);
     
     vec2 uv1=uv+vec2(dx,dy);
     vec2 size=openfl_TextureSize.xy/pSize;

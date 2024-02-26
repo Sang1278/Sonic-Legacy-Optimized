@@ -26,9 +26,9 @@ float lerp(float a, float b, float lerp) {
 void main() {
     vec4 color = flixel_texture2D(bitmap, openfl_TextureCoordv);
     vec3 hsv = rgb2hsv(vec3(color.r, color.g, color.b));
-    hsv.r = 1;
+    hsv.r = 1.;
     vec3 rgbColor = hsv2rgb(hsv);
-    float l = sqrt(pow(((openfl_TextureCoordv.x - 0.5) * 2), 2) + pow(((openfl_TextureCoordv.y - 0.5) * 2), 2));
+    float l = sqrt(pow(((openfl_TextureCoordv.x - 0.5) * 2.), 2.) + pow(((openfl_TextureCoordv.y - 0.5) * 2.), 2.));
     if (enabled) gl_FragColor = vec4(lerp(color.x, rgbColor.x + 0.1, l), lerp(color.y, rgbColor.y, l), lerp(color.z, rgbColor.z, l), color.a);
     else gl_FragColor = color;
 }
