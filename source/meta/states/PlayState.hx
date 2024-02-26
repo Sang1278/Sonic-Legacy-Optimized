@@ -4770,7 +4770,7 @@ class PlayState extends MusicBeatState
 							else
 								field.owner.playGhostAnim(note.noteData, animToPlay, true);		
 
-							if (field.owner.pauseAnimForSustain && ((note.nextNote?.isSustainNote || note.isSustainNote)) && !note.animation.curAnim.name.contains('end')) field.owner.currentlyHolding = true;
+							if (field.owner.pauseAnimForSustain && ((if (note.nextNote.isSustainNote != null) note.nextNote.isSustainNote || note.isSustainNote)) && !note.animation.curAnim.name.contains('end')) field.owner.currentlyHolding = true;
 							else field.owner.currentlyHolding = false;
 							
 							
