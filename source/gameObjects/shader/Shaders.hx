@@ -275,7 +275,7 @@ class ScanlineShader extends FlxShader
 	@:glFragmentSource('
 		#pragma header
 		const float scale = 1.0;
-	uniform bool lockAlpha = false;
+	uniform bool lockAlpha;
 		void main()
 		{
 			if (mod(floor(openfl_TextureCoordv.y * openfl_TextureSize.y / scale), 2.0) == 0.0 ){
@@ -348,8 +348,8 @@ class Tiltshift extends FlxShader
 		 
 		// I am hardcoding the constants like a jerk
 			
-		uniform float bluramount  = 1.0;
-		uniform float center      = 1.0;
+		uniform float bluramount;
+		uniform float center;
 		const float stepSize    = 0.004;
 		const float steps       = 3.0;
 		 
@@ -487,10 +487,10 @@ class GrainChromaFuckingNightmareShader extends FlxShader
 
 	const float grainamount = 0.05; //grain amount
 	bool colored = false; //colored noise?
-	uniform float coloramount = 0.6;
-	uniform float grainsize = 1.6; //grain particle size (1.5 - 2.5)
-	uniform float lumamount = 1.0; //
-uniform bool lockAlpha = false;
+	uniform float coloramount;
+	uniform float grainsize; //grain particle size (1.5 - 2.5)
+	uniform float lumamount; //
+uniform bool lockAlpha;
 
 	//a random texture generator, but you can also use a pre-computed perturbation texture
 
@@ -677,10 +677,10 @@ class Grain extends FlxShader
 
 		const float grainamount = 0.05; //grain amount
 		bool colored = false; //colored noise?
-		uniform float coloramount = 0.6;
-		uniform float grainsize = 1.6; //grain particle size (1.5 - 2.5)
-		uniform float lumamount = 1.0; //
-	uniform bool lockAlpha = false;
+		uniform float coloramount;
+		uniform float grainsize; //grain particle size (1.5 - 2.5)
+		uniform float lumamount; //
+	uniform bool lockAlpha;
 
 		//a random texture generator, but you can also use a pre-computed perturbation texture
 	
@@ -965,8 +965,8 @@ class VCRDistortionShader extends FlxShader // https://www.shadertoy.com/view/ld
 
       gl_FragColor = mix(video,vec4(noise(uv * 75.)),.05);
 
-      if(curUV.x<0 || curUV.x>1 || curUV.y<0 || curUV.y>1){
-        gl_FragColor = vec4(0,0,0,0);
+      if(curUV.x<0. || curUV.x>1. || curUV.y<0. || curUV.y>1.){
+        gl_FragColor = vec4(0.,0.,0.,0.);
       }
 
     }
@@ -997,10 +997,10 @@ class ThreeDEffect extends Effect{
 class ThreeDShader extends FlxShader{
 	@:glFragmentSource('
 	#pragma header
-	uniform float xrot = 0.0;
-	uniform float yrot = 0.0;
-	uniform float zrot = 0.0;
-	uniform float dept = 0.0;
+	uniform float xrot;
+	uniform float yrot;
+	uniform float zrot;
+	uniform float dept;
 	float alph = 0;
 float plane( in vec3 norm, in vec3 po, in vec3 ro, in vec3 rd ) {
     float de = dot(norm, rd);
@@ -1022,7 +1022,7 @@ vec2 raytraceTexturedQuad(in vec3 rayOrigin, in vec3 rayDirection, in vec3 quadC
     //--------------------------------------
     
     vec3 right = RotationMatrix * vec3(quadDimensions.x, 0.0, 0.0);
-    vec3 up = RotationMatrix * vec3(0, quadDimensions.y, 0);
+    vec3 up = RotationMatrix * vec3(0., quadDimensions.y, 0.);
     vec3 normal = cross(right, up);
     normal /= length(normal);
     
@@ -1039,7 +1039,7 @@ void main() {
     //Screen UV goes from 0 - 1 along each axis
     vec2 screenUV = openfl_TextureCoordv;
     vec2 p = (2.0 * screenUV) - 1.0;
-    float screenAspect = 1280/720;
+    float screenAspect = 1280./720.;
     p.x *= screenAspect;
     
     //Normalized Ray Dir
@@ -1051,7 +1051,7 @@ void main() {
     vec3 planeRotation = vec3(xrot, yrot, zrot);//this the shit you needa change
     vec2 planeDimension = vec2(-screenAspect, 1.0);
     
-    vec2 uv = raytraceTexturedQuad(vec3(0), dir, planePosition, planeRotation, planeDimension);
+    vec2 uv = raytraceTexturedQuad(vec3(0.), dir, planePosition, planeRotation, planeDimension);
 	
     //If we hit the rectangle, sample the texture
     if (abs(uv.x - 0.5) < 0.5 && abs(uv.y - 0.5) < 0.5) {
@@ -1093,8 +1093,6 @@ class FuckingTriangleEffect extends Effect{
 class FuckingTriangle extends FlxShader{
 	
 	@:glFragmentSource('
-	
-	
 			#pragma header
 			
 			const vec3 vertices[18] = vec3[18] (
@@ -1168,9 +1166,6 @@ class FuckingTriangle extends FlxShader{
 			uniform float rotY = 45.;
 		vec4 pixel(in vec2 ndc, in float aspect, inout float depth, in int vertexIndex) {
 
-			
-			
-
 			mat4 proj  = perspective(fov, aspect, near, far);
 			mat4 view  = translate(-cameraPos);
 			mat4 model = rotateX(rotX) * rotateY(rotY);
@@ -1223,9 +1218,6 @@ void main()
     
     gl_FragColor = vec4(outColor, 1.);
 }
-	
-	
-	
 	')
 	
 	
@@ -1255,11 +1247,11 @@ class BloomShader extends FlxShader{
 	
 	#pragma header
 	
-	uniform float intensity = 0.35;
-	uniform float blurSize = 1.0/512.0;
+	uniform float intensity;
+	uniform float blurSize;
 void main()
 {
-   vec4 sum = vec4(0);
+   vec4 sum = vec4(0.);
    vec2 texcoord = openfl_TextureCoordv;
    int j;
    int i;
@@ -1615,7 +1607,7 @@ class DistortBGShader extends FlxShader
 
     vec4 makeBlack(vec4 pt)
     {
-        return vec4(0, 0, 0, pt.w);
+        return vec4(0., 0., 0., pt.w);
     }
 
     void main()
@@ -1662,11 +1654,11 @@ class PulseShader extends FlxShader
         if (uampmul > 0.0)
         {
             float offsetX = sin(pt.y * uFrequency + uTime * uSpeed);
-            float offsetY = sin(pt.x * (uFrequency * 2) - (uTime / 2) * uSpeed);
-            float offsetZ = sin(pt.z * (uFrequency / 2) + (uTime / 3) * uSpeed);
-            pt.x = mix(pt.x,sin(pt.x / 2 * pt.y + (5 * offsetX) * pt.z),uWaveAmplitude * uampmul);
-            pt.y = mix(pt.y,sin(pt.y / 3 * pt.z + (2 * offsetZ) - pt.x),uWaveAmplitude * uampmul);
-            pt.z = mix(pt.z,sin(pt.z / 6 * (pt.x * offsetY) - (50 * offsetZ) * (pt.z * offsetX)),uWaveAmplitude * uampmul);
+            float offsetY = sin(pt.x * (uFrequency * 2.) - (uTime / 2.) * uSpeed);
+            float offsetZ = sin(pt.z * (uFrequency / 2.) + (uTime / 3.) * uSpeed);
+            pt.x = mix(pt.x,sin(pt.x / 2. * pt.y + (5. * offsetX) * pt.z),uWaveAmplitude * uampmul);
+            pt.y = mix(pt.y,sin(pt.y / 3. * pt.z + (2. * offsetZ) - pt.x),uWaveAmplitude * uampmul);
+            pt.z = mix(pt.z,sin(pt.z / 6. * (pt.x * offsetY) - (50. * offsetZ) * (pt.z * offsetX)),uWaveAmplitude * uampmul);
         }
 
 

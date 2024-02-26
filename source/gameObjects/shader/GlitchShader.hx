@@ -172,7 +172,7 @@ vec4 distort(sampler2D sampler, vec2 uv, float edgeSize)
 void main()
 {
 	vec2 uv =  openfl_TextureCoordv;
-    if(Amount <= 0){
+    if(Amount <= 0.){
         gl_FragColor = flixel_texture2D(bitmap, uv);
     }else{
         wow = clamp(mod(noise(iTime + uv.y), 1.0), 0.0, 1.0) * 2.0 - 1.0;    
@@ -236,12 +236,9 @@ float randomRange (in vec2 seed, in float min, in float max) {
 float insideRange(float v, float bottom, float top) {
    return step(bottom, v) - step(top, v);
 }
-
-
    
 void main()
 {
-    
     float time = floor(iTime * SPEED * 60.0);    
 	vec2 uv = openfl_TextureCoordv;
     
