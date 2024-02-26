@@ -44,7 +44,7 @@ class DesktopMiscSettings extends DesktopBaseOptions
 		'If enabled, allows assets to be cached directly to the GPU. helps Performance',
 		'cacheOnGPU',
 		'bool',
-		'false',
+		false
 		);
 		addOption(option);
 		/*
