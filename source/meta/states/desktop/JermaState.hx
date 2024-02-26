@@ -138,10 +138,14 @@ class JermaState extends MusicBeatState
         vocals.loadEmbedded(Paths.music('Shady Face'),true);
         inst.fadeTween.cancelTween();
         vocals.fadeTween.cancelTween();
-        inst?.play();
-        vocals?.play(); 
-        inst?.fadeIn(1,0,0.7);
-        vocals?.fadeIn(1,0,0.7); 
+        if (inst != null)
+        inst.play();
+        if (vocals != null)
+        vocals.play(); 
+        if (inst != null)
+        inst.fadeIn(1,0,0.7);
+        if (vocals != null)
+        vocals.fadeIn(1,0,0.7); 
 
     }
 
@@ -157,14 +161,18 @@ class JermaState extends MusicBeatState
     {
         if (sound == null) return;
 
-        sound?.fadeTween.cancelTween();
+        if (sound != null)
+        sound.fadeTween.cancelTween();
         if (fadeout){
-            sound?.fadeOut(0.7,0, Void->{destroyFlxSound(sound);});
+          if (sound != null)
+            sound.fadeOut(0.7,0, Void->{destroyFlxSound(sound);});
             return;
         }
-        
-        sound?.stop();
-        sound?.destroy();
+
+        if (sound != null)
+        sound.stop();
+        if (sound != null)
+        sound.destroy();
         sound = null;
     }
 
@@ -813,12 +821,16 @@ class GallerySubstate extends MusicBeatSubstate {
             videoPaths.set(images.length-1,videos[i]);
 
             video.addCallback(ONSTART,()-> {
-                JermaState.inst?.pause();
-                JermaState.vocals?.pause();
+              if (JermaState.inst != null)
+                JermaState.inst.pause();
+                if (JermaState.vocals != null)
+                JermaState.vocals.pause();
             });
             video.addCallback(ONEND,()->{
-                JermaState.inst?.resume();
-                JermaState.vocals?.resume();
+              if (JermaState.inst != null)
+                JermaState.inst.resume();
+                if (JermaState.vocals != null)
+                JermaState.vocals.resume();
             });
             
        }
@@ -847,9 +859,11 @@ class GallerySubstate extends MusicBeatSubstate {
             if (images.members[currentImage] is PsychVideoSprite) {
                 var vid = cast(images.members[currentImage],PsychVideoSprite);
                 vid.pause();
-                if (!JermaState.inst?.playing) {
-                    JermaState.inst?.resume();
-                    JermaState.vocals?.resume();
+                if (JermaState.inst != null && !JermaState.inst.playing) {
+                    if (JermaState.inst != null)
+                    JermaState.inst.resume();
+                    if (JermaState.vocals != null)
+                    JermaState.vocals.resume();
                 }
             }
 
@@ -881,9 +895,11 @@ class GallerySubstate extends MusicBeatSubstate {
 
 
     function leaveMenu() {
-        if (!JermaState.inst?.playing) {
-            JermaState.inst?.resume();
-            JermaState.vocals?.resume();
+        if (JermaState.inst != null && !JermaState.inst.playing) {
+            if (JermaState.inst != null)
+            JermaState.inst.resume();
+            if (JermaState.vocals != null)
+            JermaState.vocals.resume();
         }
         FlxG.camera.fade(FlxColor.BLACK,0.25,false,()->{
             FlxG.camera.zoom = 1.5;
@@ -1077,7 +1093,7 @@ class TapeSubstate extends MusicBeatSubstate {
         FlxG.sound.play(Paths.sound('SEL_move'));
 
         var anim:String = '${id + 1}';
-        if (buttons.animation.curAnim?.name == anim)  buttons.playAnim('0');   
+        if (buttons.animation.curAnim != null && buttons.animation.curAnim.name == anim)  buttons.playAnim('0');   
         else buttons.playAnim(anim);
 
         tapeLogic(buttons.animation.curAnim.name);
@@ -1092,8 +1108,10 @@ class TapeSubstate extends MusicBeatSubstate {
             Thread.create(() -> {
                 mutex.acquire();
 
-                JermaState.inst?.stop();
-                JermaState.vocals?.stop();
+                 if (JermaState.inst != null)
+                JermaState.inst.stop();
+                if (JermaState.vocals != null)
+                JermaState.vocals.stop();
                 try {
                     var getSongs = songPath.get(songs[currentSelection]);
                     trace(getSongs);
@@ -1127,7 +1145,7 @@ class TapeSubstate extends MusicBeatSubstate {
             updateSongName();
             playTape(true);
 
-            new FlxTimer().start(0.1, Void -> {buttons?.playAnim('0');});
+            new FlxTimer().start(0.1, Void -> {if (buttons != null) buttons.playAnim('0');});
         }
 
         if (anim == '2') {
@@ -1142,7 +1160,7 @@ class TapeSubstate extends MusicBeatSubstate {
         if (anim == '3' || anim == '4') {
             var val = anim == '3' ?  -1 : 1;
             currentSelection = FlxMath.wrap(currentSelection + val,0,songs.length-1);
-            new FlxTimer().start(0.1, Void -> {buttons?.playAnim('0');});
+            new FlxTimer().start(0.1, Void -> {if (buttons != null) buttons.playAnim('0');});
             tapeLogic('1');
         }
 
