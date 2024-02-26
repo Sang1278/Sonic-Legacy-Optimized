@@ -478,7 +478,8 @@ class DesktopMenuState extends MusicBeatState
             screen.animation.play("idle");
             taskbar.visible = true;
 
-            introTmr?.cancel();
+            if (introTmr != null)
+            introTmr.cancel();
 
             zz = zoom = FlxG.camera.zoom;
             if (!fromMenu){
