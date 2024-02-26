@@ -93,11 +93,9 @@ class DesktopVisualsUISettings extends DesktopBaseOptions
 		super.destroy();
 	}
 
-	#if !mobile
 	function onChangeFPSCounter()
 	{
 		if(Main.fpsVar != null)
 			Main.fpsVar.visible = ClientPrefs.data.showFPS;
 	}
-	#end
 }
