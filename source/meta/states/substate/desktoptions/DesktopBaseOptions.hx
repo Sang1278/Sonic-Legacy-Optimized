@@ -84,7 +84,7 @@ class DesktopBaseOptions extends MusicBeatSubstate
                     checkbox.setOffsets(300, 0);
                     checkboxGroup.add(checkbox);
                 } else if(optionsArray[i].type != 'button' && optionsArray[i].type != 'label') {
-                    var valueText:AttachedFlxText = new AttachedFlxText(0,0, '' + optionsArray[i].getValue(),);
+                    var valueText:AttachedFlxText = new AttachedFlxText(0,0, '' + optionsArray[i].getValue());
                     valueText.setFormat(Paths.font("cmd.ttf"), 16, FlxColor.WHITE, LEFT);
                     valueText.setPosition(optionText.x, optionText.y);
                     valueText.setOffsets(300, 0);
