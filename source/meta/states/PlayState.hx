@@ -1410,7 +1410,8 @@ class PlayState extends MusicBeatState
 
 	public function createUIClass(newUI:String = '') {
 		var hudClass = Type.resolveClass('meta.ui.$newUI');
-		hudClass ??= meta.ui.RodentrapUI;
+    if(hudClass == null)
+    hudClass = meta.ui.RodentrapUI;
 		Type.createInstance(hudClass,[]);
 
 		uiCallFunction((ui:BaseUI)-> {ui.createUI();});
@@ -1420,7 +1421,7 @@ class PlayState extends MusicBeatState
 	function fixDoubleNotes(){
 		for (i in 0...unspawnNotes.length) {
 			if (unspawnNotes[i].mustPress && !unspawnNotes[i].noAnimation) {
-				if (unspawnNotes[i].strumTime == unspawnNotes[i+1]?.strumTime) {
+        if (unspawnNotes[i+1] != null && unspawnNotes[i].strumTime == unspawnNotes[i+1].strumTime) {
 					if (unspawnNotes[i+1].noAnimation) return;
 					unspawnNotes[i+1].noAnimation = true;
 					trace('heh.. fixed one');
@@ -4607,8 +4608,10 @@ class PlayState extends MusicBeatState
 					}
 					//temp for now
 
-					if (char.pauseAnimForSustain && ((note.nextNote?.isSustainNote || note.isSustainNote)) && !note.animation.curAnim.name.contains('end')) char.currentlyHolding = true;
-					else char.currentlyHolding = false;
+					if (char.pauseAnimForSustain && ((if note.nextNote.isSustainNote != null && note.nextNote.isSustainNote || note.isSustainNote)) && !note.animation.curAnim.name.contains('end'))
+					char.currentlyHolding = true;
+					else
+					char.currentlyHolding = false;
 			}
 		}
 
