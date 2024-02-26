@@ -3206,8 +3206,10 @@ class PlayState extends MusicBeatState
 							vocals.volume = 0;
 							dad.stunned = true;
 							boyfriend.stunned = true;
-							boyfriend.animation?.stop();
-							dad.animation?.stop();
+							if (boyfriend.animation != null)
+							boyfriend.animation.stop();
+							if (dad.animation != null)
+							dad.animation.stop();
 							boyfriend.playAnim('ow',true);
 							dad.playAnim('idle',true);
 	
