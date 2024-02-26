@@ -4608,7 +4608,7 @@ class PlayState extends MusicBeatState
 					}
 					//temp for now
 
-					if (char.pauseAnimForSustain && ((if (note.nextNote.isSustainNote) != null && note.nextNote.isSustainNote || note.isSustainNote)) && !note.animation.curAnim.name.contains('end'))
+					if (char.pauseAnimForSustain && ((if (note.nextNote.isSustainNote != null) note.nextNote.isSustainNote || note.isSustainNote)) && !note.animation.curAnim.name.contains('end'))
 					char.currentlyHolding = true;
 					else
 					char.currentlyHolding = false;
