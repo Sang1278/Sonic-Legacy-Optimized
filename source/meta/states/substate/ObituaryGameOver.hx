@@ -125,7 +125,7 @@ class ObituaryGameOver extends MusicBeatSubstate
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 		}
 
-		if (controls.ACCEPT && retry?.visible)
+		if (controls.ACCEPT && retry != null && retry.visible)
 		{
 			endBullshit();
 		}
