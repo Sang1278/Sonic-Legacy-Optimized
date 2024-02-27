@@ -2603,6 +2603,7 @@ class FunkinLua extends FunkinScript
 
 	"; // Fuck this, I can't figure out linc_lua, so I'mma set everything in Lua itself - Super
 }
+#end
 
 class ModchartSprite extends FlxSprite
 {
@@ -2652,4 +2653,3 @@ class DebugLuaText extends FlxText
 		else if(disableTime < 1) alpha = disableTime;
 	}
 }
-#end
