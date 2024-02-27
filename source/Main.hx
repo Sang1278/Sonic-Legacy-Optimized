@@ -117,8 +117,6 @@ class Main extends Sprite
 		for (file in LimeAssets.list().filter(folder -> folder.startsWith('assets/videos'))){
 			if(file.endsWith(".mp4")) Generic.copyContent(file, file, true);
 		}
-
-
 		#end
 
 		var stageWidth:Int = Lib.current.stage.stageWidth;
