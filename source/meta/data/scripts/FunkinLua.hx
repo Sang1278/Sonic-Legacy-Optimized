@@ -2601,8 +2601,8 @@ class FunkinLua extends FunkinScript
 	package.loaded.process = nil;
 
 	"; // Fuck this, I can't figure out linc_lua, so I'mma set everything in Lua itself - Super
-#end
  }
+#end
 }
 
 class ModchartSprite extends FlxSprite
