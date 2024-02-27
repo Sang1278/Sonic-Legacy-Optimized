@@ -4614,7 +4614,7 @@ class PlayState extends MusicBeatState
 					}
 					//temp for now
 
-					if (char.pauseAnimForSustain && ((if (note.nextNote.isSustainNote != null) note.nextNote.isSustainNote || note.isSustainNote)) && !note.animation.curAnim.name.contains('end'))
+					if (char.pauseAnimForSustain && ((note.nextNote != null && note.nextNote.isSustainNote || note.isSustainNote)) && !note.animation.curAnim.name.contains('end'))
 					char.currentlyHolding = true;
 					else
 					char.currentlyHolding = false;
@@ -4776,7 +4776,7 @@ class PlayState extends MusicBeatState
 							else
 								field.owner.playGhostAnim(note.noteData, animToPlay, true);		
 
-							if (field.owner.pauseAnimForSustain && ((if (note.nextNote.isSustainNote != null) note.nextNote.isSustainNote || note.isSustainNote)) && !note.animation.curAnim.name.contains('end')) field.owner.currentlyHolding = true;
+							if (field.owner.pauseAnimForSustain && ((note.nextNote != null && note.nextNote.isSustainNote || note.isSustainNote)) && !note.animation.curAnim.name.contains('end'))  field.owner.currentlyHolding = true;
 							else field.owner.currentlyHolding = false;
 							
 							
