@@ -442,7 +442,7 @@ class Note extends FlxSprite
 		if(PlayState.isPixelStage) {
 			if(isSustainNote) {
 				if ((ClientPrefs.data.noteSkin == 'Quants' || ClientPrefs.data.noteSkin == "QuantStep") && canQuant){
-					if(Assets.exists(Paths.getPath("images/pixelUI/QUANT" + blahblah + "ENDS.png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah + "ENDS"))) {
+					if(Assets.exists(Paths.getPath("images/pixelUI/QUANT" + blahblah + "ENDS.png", IMAGE))) {
 						blahblah = "QUANT" + blahblah;
 						isQuant = true;
 					}
@@ -454,7 +454,7 @@ class Note extends FlxSprite
 				loadGraphic(Paths.image('pixelUI/' + blahblah + 'ENDS'), true, Math.floor(width), Math.floor(height));
 			} else {
 				if ((ClientPrefs.data.noteSkin == 'Quants' || ClientPrefs.data.noteSkin == "QuantStep") && canQuant){
-					if(Assets.exists(Paths.getPath("images/pixelUI/QUANT" + blahblah + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("pixelUI/QUANT" + blahblah))) {
+					if(Assets.exists(Paths.getPath("images/pixelUI/QUANT" + blahblah + ".png", IMAGE))) {
 						blahblah = "QUANT" + blahblah;
 						isQuant = true;
 					}
@@ -482,7 +482,7 @@ class Note extends FlxSprite
 			}
 		} else {
 			if ((ClientPrefs.data.noteSkin == 'Quants' || ClientPrefs.data.noteSkin == "QuantStep") && canQuant){
-				if(Assets.exists(Paths.getPath("images/QUANT" + blahblah + ".png", IMAGE)) || FileSystem.exists(Paths.modsImages("QUANT" + blahblah))) { // this can probably only be done once and then added to some sort of cache
+				if(Assets.exists(Paths.getPath("images/QUANT" + blahblah + ".png", IMAGE))) { // this can probably only be done once and then added to some sort of cache
 					// soon:tm:
 					blahblah = "QUANT" + blahblah;
 					isQuant = true;
