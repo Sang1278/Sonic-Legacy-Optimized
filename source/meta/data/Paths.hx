@@ -229,12 +229,12 @@ class Paths
 	}
 	static public function video(key:String)
 	{
-		return Generic.returnPath() + 'assets/videos/$key.$VIDEO_EXT';
+		return Generic.returnPath() + 'assets/videos/$key.$VIDEO_EXTS';
 	}
 
 	static public function truevideo(key:String)
 	{
-		return 'assets/videos/$key.$VIDEO_EXT';
+		return 'assets/videos/$key.$VIDEO_EXTS';
 	}
 
 	static public function sound(key:String, ?library:String):Sound
