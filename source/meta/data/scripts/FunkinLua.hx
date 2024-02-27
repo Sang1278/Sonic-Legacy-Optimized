@@ -2590,7 +2590,6 @@ class FunkinLua extends FunkinScript
 		lua = null;
 		#end
 	}
-  #end
 
 	static inline var CLENSE:String = "
 	os.execute = nil;
@@ -2601,6 +2600,7 @@ class FunkinLua extends FunkinScript
 	package.loaded.process = nil;
 
 	"; // Fuck this, I can't figure out linc_lua, so I'mma set everything in Lua itself - Super
+  #end
 }
 
 class ModchartSprite extends FlxSprite
