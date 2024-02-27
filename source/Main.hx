@@ -17,6 +17,9 @@ import meta.states.*;
 import meta.data.*;
 import meta.MacroData;
 import meta.backend.FPSCounter;
+#if sys
+import sys.FileSystem;
+#end
 
 class Main extends Sprite
 {
