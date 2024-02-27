@@ -19,8 +19,6 @@ import meta.states.editors.*;
 import gameObjects.*;
 #if sys
 import flash.media.Sound;
-import sys.FileSystem;
-import sys.io.File;
 #end
 
 using StringTools;
@@ -75,7 +73,7 @@ class FunkinHScript extends FunkinScript
 	{
 		if (name == null)
 			name = file;
-		return parseString(File.getContent(file), name);
+		return parseString(OpenFlAssets.getText(file), name);
 	}
 
 	var interpreter:Interp = new Interp();
@@ -258,8 +256,8 @@ class FunkinHScript extends FunkinScript
 
 			try{				
 				runtime = new FlxRuntimeShader(
-					fragFile==null ? null : Paths.getContent(Paths.exists(Paths.modsShaderFragment(fragFile)) ? Paths.modsShaderFragment(fragFile) : Paths.shaderFragment(fragFile)), 
-					vertFile==null ? null : Paths.getContent(Paths.exists(Paths.modsShaderVertex(vertFile)) ? Paths.modsShaderVertex(vertFile) : Paths.shaderVertex(vertFile))
+					fragFile==null ? null : Paths.getContent(Paths.exists(Paths.shaderFragment(fragFile)) ? Paths.shaderFragment(fragFile) : Paths.shaderFragment(fragFile)), 
+					vertFile==null ? null : Paths.getContent(Paths.exists(Paths.shaderVertex(vertFile)) ? Paths.shaderVertex(vertFile) : Paths.shaderVertex(vertFile))
 				);
 			}catch(e:Dynamic){
 				trace("Shader compilation error:" + e.message);
@@ -350,7 +348,7 @@ class FunkinHScript extends FunkinScript
 
 		set("ScriptState", HScriptState);
 		set("newScriptedState", function(stateName:String){
-			return new HScriptState(fromFile(Paths.modFolders('states/$stateName.hscript')));
+			return new HScriptState(fromFile(Paths.getPath('states/$stateName.hscript')));
 		});
 		
 		set("add", PlayState.instance.add);
@@ -474,9 +472,9 @@ class HScriptSubstate extends meta.states.substate.MusicBeatSubstate
 
 		var fileName = 'substates/$ScriptName.hscript';
 
-		for (filePath in [#if MODS_ALLOWED Paths.modFolders(fileName), Paths.mods(fileName), #end Paths.getPreloadPath(fileName)])
+		for (filePath in [Paths.getPreloadPath(fileName)])
 		{
-			if (!FileSystem.exists(filePath)) continue;
+			if (!OpenFlAssets.exists(filePath)) continue;
 
 			// some shortcuts
 			var variables = new Map<String, Dynamic>();
