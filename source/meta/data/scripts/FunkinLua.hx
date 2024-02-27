@@ -53,7 +53,6 @@ using StringTools;
 
 class FunkinLua extends FunkinScript
 {
-#if LUA_ALLOWED
 	public var errorHandler:String->Void;
 	#if LUA_ALLOWED
 	public var lua:State = null;
@@ -2602,7 +2601,6 @@ class FunkinLua extends FunkinScript
 
 	"; // Fuck this, I can't figure out linc_lua, so I'mma set everything in Lua itself - Super
  }
-#end
 }
 
 class ModchartSprite extends FlxSprite
