@@ -53,7 +53,7 @@ using StringTools;
 
 class FunkinLua extends FunkinScript
 {
-  #if LUA_ALLOWED
+
 	public var errorHandler:String->Void;
 	#if LUA_ALLOWED
 	public var lua:State = null;
@@ -2498,10 +2498,9 @@ class FunkinLua extends FunkinScript
 		}
 		#end
 		return Function_Continue;
-		}
+
 	}
 
-  #if LUA_ALLOWED
 	public static function getPropertyLoopThingWhatever(killMe:Array<String>, ?checkForTextsToo:Bool = true, ?getProperty:Bool=true):Dynamic
 	{
 		var coverMeInPiss:Dynamic = getObjectDirectly(killMe[0], checkForTextsToo);
@@ -2522,7 +2521,7 @@ class FunkinLua extends FunkinScript
 
 		return coverMeInPiss;
 	}
-  #end
+
 
 	#if LUA_ALLOWED
 	function resultIsAllowed(leLua:State, leResult:Null<Int>) { //Makes it ignore warnings
@@ -2532,6 +2531,7 @@ class FunkinLua extends FunkinScript
 		}
 		return false;
 	}
+	#end
 
 	override public function get(variable:String):Dynamic {
 		#if LUA_ALLOWED
@@ -2560,6 +2560,7 @@ class FunkinLua extends FunkinScript
 		#end
 	}
 
+	#if LUA_ALLOWED
 	public function getBool(variable:String) {
 		var result:String = null;
 		Lua.getglobal(lua, variable);
@@ -2600,7 +2601,6 @@ class FunkinLua extends FunkinScript
 	package.loaded.process = nil;
 
 	"; // Fuck this, I can't figure out linc_lua, so I'mma set everything in Lua itself - Super
- #end
 }
 
 class ModchartSprite extends FlxSprite
@@ -2650,4 +2650,5 @@ class DebugLuaText extends FlxText
 		}
 		else if(disableTime < 1) alpha = disableTime;
 	}
+
 }
