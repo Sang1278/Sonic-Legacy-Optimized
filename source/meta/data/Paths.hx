@@ -29,7 +29,7 @@ using StringTools;
 class Paths
 {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
-	public static var VIDEO_EXTS:Array<String> = ["mp4",'mov'];
+  inline public static var VIDEO_EXTS = "mp4";
 
 	#if MODS_ALLOWED
 	public static var ignoreModFolders:Array<String> = [
@@ -228,11 +228,6 @@ class Paths
 		return null;
 	}
 	static public function video(key:String)
-	{
-		return Generic.returnPath() + 'assets/videos/$key.$VIDEO_EXTS';
-	}
-
-	static public function truevideo(key:String)
 	{
 		return 'assets/videos/$key.$VIDEO_EXTS';
 	}
@@ -493,7 +488,7 @@ class Paths
 
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '') {
-		return 'mods/' + key;
+		return  #if android Sys.getCwd() + #end 'mods/' + key;
 	}
 
 	inline static public function modsFont(key:String) {
@@ -505,7 +500,7 @@ class Paths
 	}
 
 	inline static public function modsVideo(key:String) {
-		return modFolders('videos/' + key + '.' + VIDEO_EXTS[0]);
+		return modFolders('videos/' + key + '.' + VIDEO_EXTS[0];
 	}
 
 	inline static public function modsSounds(path:String, key:String) {
@@ -552,7 +547,7 @@ class Paths
 				return fileToCheck;
 
 		}
-		return 'mods/' + key;
+		return #if android Sys.getCwd() + #end 'mods/' + key;
 	}
 
 	public static var globalMods:Array<String> = [];
