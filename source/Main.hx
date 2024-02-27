@@ -135,30 +135,6 @@ class Main extends Sprite
 		if(fpsVar != null) {
 			fpsVar.visible = ClientPrefs.data.showFPS;
 		}
-
-		#if html5
-		FlxG.autoPause = false;
-		FlxG.mouse.visible = false;
-		#end
-
-		var compTime = MacroData.getDate();
-		var time = Date.now().toString();
-		var usrName = #if windows Sys.environment()["USERNAME"]; #elseif (linux || macos) return Sys.environment()["USER"]; #end
-		var compUSR = MacroData.getUSR();
-
-		compilationInformation = new TextField();
-		compilationInformation.y = (FlxG.height / 4) * 3;
-		compilationInformation.defaultTextFormat = new TextFormat("_sans", 24, FlxColor.fromRGB(255, 125, 125));
-		compilationInformation.text = 'nice! Build Compilation Date: ${compTime}\nnice! Build open date: ${time}\nnice! Build Compiled by: nice! ${compUSR}\nI know who you are. ${usrName}';
-		compilationInformation.multiline = true;
-		compilationInformation.selectable = false;
-		compilationInformation.autoSize = LEFT;
-		compilationInformation.mouseEnabled = false;
-		compilationInformation.alpha = 0.675;
-		
-		#if !debug
-		//addChild(compilationInformation);
-		#end
 	}
 
 	public static function resetSpriteCache(sprite:Sprite):Void
