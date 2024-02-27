@@ -2531,7 +2531,6 @@ class FunkinLua extends FunkinScript
 		}
 		return false;
 	}
-	#end
 
 	override public function get(variable:String):Dynamic {
 		#if LUA_ALLOWED
@@ -2591,6 +2590,7 @@ class FunkinLua extends FunkinScript
 		lua = null;
 		#end
 	}
+  #end
 
 	static inline var CLENSE:String = "
 	os.execute = nil;
