@@ -77,7 +77,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 			var baseFile = '$baseScriptFile.hscript';
 		#end
 
-			var files = [#if MODS_ALLOWED Paths.modFolders(baseFile), #end Paths.getPreloadPath(baseFile)];
+			var files = [Paths.getPreloadPath(baseFile)];
 			for (file in files)
 			{
 				if (Paths.exists(file,TEXT))
@@ -130,7 +130,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				break;
 			var baseFile = '$baseScriptFile.$ext';
 
-			var files = [Paths.modFolders(baseFile), Paths.getPreloadPath(baseFile)];
+			var files = [Paths.getPreloadPath(baseFile)];
 			for (file in files)
 			{
 				trace(file);
