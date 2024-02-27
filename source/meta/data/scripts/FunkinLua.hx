@@ -2497,7 +2497,7 @@ class FunkinLua extends FunkinScript
 		}
 		#end
 		return Function_Continue;
-
+		}
 	}
 
 	public static function getPropertyLoopThingWhatever(killMe:Array<String>, ?checkForTextsToo:Bool = true, ?getProperty:Bool=true):Dynamic
@@ -2600,7 +2600,6 @@ class FunkinLua extends FunkinScript
 	package.loaded.process = nil;
 
 	"; // Fuck this, I can't figure out linc_lua, so I'mma set everything in Lua itself - Super
- }
 }
 
 class ModchartSprite extends FlxSprite
