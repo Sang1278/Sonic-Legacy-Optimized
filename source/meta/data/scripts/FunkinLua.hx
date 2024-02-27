@@ -2512,7 +2512,6 @@ class FunkinLua extends FunkinScript
 		}
 		return coverMeInPiss;
 	}
-  #end
 
 	public static function getObjectDirectly(objectName:String, ?checkForTextsToo:Bool = true):Dynamic
 	{
@@ -2522,7 +2521,7 @@ class FunkinLua extends FunkinScript
 
 		return coverMeInPiss;
 	}
-
+  #end
 
 	#if LUA_ALLOWED
 	function resultIsAllowed(leLua:State, leResult:Null<Int>) { //Makes it ignore warnings
