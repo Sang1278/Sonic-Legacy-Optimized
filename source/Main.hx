@@ -104,17 +104,21 @@ class Main extends Sprite
 		#if mobile
 		Generic.mode = ROOTDATA;
 
-		if (!FileSystem.exists(Generic.returnPath() + 'assets')) {
-			FileSystem.createDirectory(Generic.returnPath() + 'assets');
+		Sys.setCwd(haxe.io.Path.addTrailingSlash(Generic.returnPath()));
+
+		if (!FileSystem.exists('assets')) {
+			FileSystem.createDirectory('assets');
 		}
 
-		if (!FileSystem.exists(Generic.returnPath() + 'assets/videos')) {
-			FileSystem.createDirectory(Generic.returnPath() + 'assets/videos');
+		if (!FileSystem.exists('assets/videos')) {
+			FileSystem.createDirectory('assets/videos');
 		}
 
-		for (video in videos) {
-			Generic.copyContent(Paths.truevideo(video), Paths.truevideo(video));
+		for (file in LimeAssets.list().filter(folder -> folder.startsWith('assets/videos'))){
+			if(file.endsWith(".mp4")) Generic.copyContent(file, file, true);
 		}
+
+
 		#end
 
 		var stageWidth:Int = Lib.current.stage.stageWidth;
