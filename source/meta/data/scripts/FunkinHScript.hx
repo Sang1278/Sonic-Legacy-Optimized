@@ -348,7 +348,7 @@ class FunkinHScript extends FunkinScript
 
 		set("ScriptState", HScriptState);
 		set("newScriptedState", function(stateName:String){
-			return new HScriptState(fromFile(Paths.getLibraryPath('states/$stateName.hscript')));
+			return new HScriptState(fromFile(Paths.getPath('states/$stateName.hscript', TEXT)));
 		});
 		
 		set("add", PlayState.instance.add);
