@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import flixel.util.FlxColor;
+import lime.utils.Assets as LimeAssets;
 import openfl.Assets;
 import openfl.Lib;
 import openfl.display.FPS;
