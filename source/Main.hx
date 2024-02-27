@@ -87,8 +87,7 @@ class Main extends Sprite
 
 		#if mobile
 		Generic.mode = ROOTDATA;
-
-		Sys.setCwd(haxe.io.Path.addTrailingSlash(Generic.returnPath())); // sets the default file system working directory, makes all File and FileSystem functions work without needing to use Generic.returnPath() everywhere
+		Sys.setCwd(haxe.io.Path.addTrailingSlash(Generic.returnPath()));
 
 		if (!FileSystem.exists('assets')) {
 			FileSystem.createDirectory('assets');
@@ -99,11 +98,8 @@ class Main extends Sprite
 		}
 
 		for (file in LimeAssets.list().filter(folder -> folder.startsWith('assets/videos'))){
-
-			if(file.endsWith(".mp4")) 
-			Generic.copyContent(file, file, true);
+			if(file.endsWith(".mp4")) Generic.copyContent(file, file, true);
 		}
-
 		#end
 
 		var stageWidth:Int = Lib.current.stage.stageWidth;
