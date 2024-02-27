@@ -1349,10 +1349,8 @@ class PlayState extends MusicBeatState
 			precacheList.set(Paths.formatToSongPath(ClientPrefs.data.pauseMusic), 'music');
 		}
 
-    #if desktop
 		// Updating Discord Rich Presence.
 		DiscordHandler.changePresence(detailsText, SONG.song.toLowerCase().replace('-', ' '), iconP2.getCharacter());
-     #end
 
 		if(!ClientPrefs.data.controllerMode)
 		{
@@ -1985,10 +1983,10 @@ class PlayState extends MusicBeatState
 		FlxTween.tween(timeBar, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
 		FlxTween.tween(timeTxt, {alpha: 1}, 0.5, {ease: FlxEase.circOut});
 
-    #if desktop
+
+
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordHandler.changePresence(detailsText, SONG.song.toLowerCase().replace('-', ' '), iconP2.getCharacter(), true, songLength);
-      #end
 	
 		setOnScripts('songLength', songLength);
 		setOnScripts('barSongLength', barSongLength);
@@ -2627,7 +2625,7 @@ class PlayState extends MusicBeatState
 
 			PsychVideoSprite.globalResume();
 
-     #if desktop
+
 			if (startTimer != null && startTimer.finished)
 			{
 				DiscordHandler.changePresence(detailsText, SONG.song.toLowerCase().replace('-', ' '), iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
@@ -2636,14 +2634,13 @@ class PlayState extends MusicBeatState
 			{
 				DiscordHandler.changePresence(detailsText, SONG.song.toLowerCase().replace('-', ' '), iconP2.getCharacter());
 			}
-	  #end
+
 		}
 		callOnHScripts('onSubstateClose', []);
 
 		super.closeSubState();
 	}
 
-  #if desktop
 	override public function onFocus():Void
 	{
 
@@ -2674,7 +2671,6 @@ class PlayState extends MusicBeatState
 
 		super.onFocusLost();
 	}
-  #end
 
 	function resyncVocals():Void
 	{
@@ -2780,9 +2776,9 @@ class PlayState extends MusicBeatState
 				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				//}
 
-        #if desktop
+
 				DiscordHandler.changePresence(detailsPausedText, SONG.song.toLowerCase().replace('-', ' '), iconP2.getCharacter());
-        #end
+
 			}
 		}
 
@@ -3248,10 +3244,9 @@ class PlayState extends MusicBeatState
 
 				// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
-        #if desktop
+
 				// Game Over doesn't get his own variable because it's only used here
 				DiscordHandler.changePresence("Game Over - " + detailsText, SONG.song.toLowerCase().replace('-', ' '), iconP2.getCharacter());
-          #end
 
 				isDead = true;
 				return true;
@@ -4876,9 +4871,7 @@ class PlayState extends MusicBeatState
 		}
 		hscriptArray = [];
 		funkyScripts = [];
-		#if LUA_ALLOWED
 		luaArray = [];
-		#end
 		notetypeScripts.clear();
 		eventScripts.clear();
 		if(!ClientPrefs.data.controllerMode)
@@ -4896,13 +4889,11 @@ class PlayState extends MusicBeatState
 		FlxG.sound.music.fadeTween = null;
 	}
 
-  #if LUA_ALLOWED
 	public function removeLua(lua:FunkinLua) {
 		if(luaArray != null && !preventLuaRemove) {
 			luaArray.remove(lua);
 		}
 	}
-#end
 
 	var lastStepHit:Int = -1;
 	override function stepHit()
@@ -5033,9 +5024,7 @@ class PlayState extends MusicBeatState
 		callOnScripts('onSectionHit', []);
 	}
 
-  #if LUA_ALLOWED
 	public var closeLuas:Array<FunkinLua> = [];
-  #end
 
 	public function callOnScripts(event:String, args:Array<Dynamic>, ignoreStops:Bool = false, ?exclusions:Array<String>, ?scriptArray:Array<Dynamic>,
 			?ignoreSpecialShit:Bool = true)
