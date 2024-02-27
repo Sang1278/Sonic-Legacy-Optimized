@@ -2500,6 +2500,7 @@ class FunkinLua extends FunkinScript
 		}
 	}
 
+  #if LUA_ALLOWED
 	public static function getPropertyLoopThingWhatever(killMe:Array<String>, ?checkForTextsToo:Bool = true, ?getProperty:Bool=true):Dynamic
 	{
 		var coverMeInPiss:Dynamic = getObjectDirectly(killMe[0], checkForTextsToo);
@@ -2511,6 +2512,7 @@ class FunkinLua extends FunkinScript
 		}
 		return coverMeInPiss;
 	}
+  #end
 
 	public static function getObjectDirectly(objectName:String, ?checkForTextsToo:Bool = true):Dynamic
 	{
