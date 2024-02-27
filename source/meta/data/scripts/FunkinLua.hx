@@ -1,6 +1,7 @@
 package meta.data.scripts;
 
 #if LUA_ALLOWED
+#if LUA_ALLOWED
 import llua.Lua;
 import llua.LuaL;
 import llua.State;
@@ -2650,5 +2651,5 @@ class DebugLuaText extends FlxText
 		}
 		else if(disableTime < 1) alpha = disableTime;
 	}
-
 }
+#end
