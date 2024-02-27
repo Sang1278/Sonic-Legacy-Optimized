@@ -284,9 +284,7 @@ class PlayState extends MusicBeatState
 
 	// Script shit
 	public static var instance:PlayState;
- #if LUA ALLOWED
 	public var luaArray:Array<FunkinLua> = [];
-	#end
 	public var funkyScripts:Array<FunkinScript> = [];
 	public var hscriptArray:Array<FunkinHScript> = [];
 
@@ -4873,7 +4871,9 @@ class PlayState extends MusicBeatState
 		}
 		hscriptArray = [];
 		funkyScripts = [];
+		#if LUA_ALLOWED
 		luaArray = [];
+		#end
 		notetypeScripts.clear();
 		eventScripts.clear();
 		if(!ClientPrefs.data.controllerMode)
