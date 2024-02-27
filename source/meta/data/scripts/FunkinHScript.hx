@@ -73,7 +73,7 @@ class FunkinHScript extends FunkinScript
 	{
 		if (name == null)
 			name = file;
-		return parseString(OpenFlAssets.getText(file), name);
+		return parseString(Assets.getText(file), name);
 	}
 
 	var interpreter:Interp = new Interp();
@@ -102,7 +102,7 @@ class FunkinHScript extends FunkinScript
 
 		set("ObjectTools", FlxObjectTools);
 		set("Assets", Assets);
-		set("OpenFlAssets", openfl.utils.Assets);
+		set("Assets", openfl.utils.Assets);
 		set("FlxG", flixel.FlxG);
 		set("state", flixel.FlxG.state);
 		set("FlxSprite", flixel.FlxSprite);
@@ -474,7 +474,7 @@ class HScriptSubstate extends meta.states.substate.MusicBeatSubstate
 
 		for (filePath in [Paths.getPreloadPath(fileName)])
 		{
-			if (!OpenFlAssets.exists(filePath)) continue;
+			if (!Assets.exists(filePath)) continue;
 
 			// some shortcuts
 			var variables = new Map<String, Dynamic>();
