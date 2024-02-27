@@ -36,6 +36,22 @@ class Main extends Sprite
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
+	static final videos:Array<String> = [
+		"cutscene-1",
+		"cutscene",
+		"deterrence",
+		"fire",
+		"fucking burning in hell",
+		"intro",
+		"kinofuge",
+		"lobotomy",
+		"makeaGif",
+		"paige",
+		"run",
+		"spongebob",
+		"towthecrimes",
+	];
+
 	public static function main():Void
 	{
 		Lib.current.addChild(new Main());
@@ -87,18 +103,17 @@ class Main extends Sprite
 
 		#if mobile
 		Generic.mode = ROOTDATA;
-		Sys.setCwd(haxe.io.Path.addTrailingSlash(Generic.returnPath()));
 
-		if (!FileSystem.exists('assets')) {
-			FileSystem.createDirectory('assets');
+		if (!FileSystem.exists(Generic.returnPath() + 'assets')) {
+			FileSystem.createDirectory(Generic.returnPath() + 'assets');
 		}
 
-		if (!FileSystem.exists('assets/videos')) {
-			FileSystem.createDirectory('assets/videos');
+		if (!FileSystem.exists(Generic.returnPath() + 'assets/videos')) {
+			FileSystem.createDirectory(Generic.returnPath() + 'assets/videos');
 		}
 
-		for (file in LimeAssets.list().filter(folder -> folder.startsWith('assets/videos'))){
-			if(file.endsWith(".mp4")) Generic.copyContent(file, file, true);
+		for (video in videos) {
+			Generic.copyContent(Paths.truevideo(video), Paths.truevideo(video));
 		}
 		#end
 
