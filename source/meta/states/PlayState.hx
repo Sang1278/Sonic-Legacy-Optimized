@@ -284,7 +284,9 @@ class PlayState extends MusicBeatState
 
 	// Script shit
 	public static var instance:PlayState;
+ #if LUA ALLOWED
 	public var luaArray:Array<FunkinLua> = [];
+	#end
 	public var funkyScripts:Array<FunkinScript> = [];
 	public var hscriptArray:Array<FunkinHScript> = [];
 
