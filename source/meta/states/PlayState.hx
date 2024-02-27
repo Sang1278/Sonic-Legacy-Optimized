@@ -4891,11 +4891,13 @@ class PlayState extends MusicBeatState
 		FlxG.sound.music.fadeTween = null;
 	}
 
+  #if LUA_ALLOWED
 	public function removeLua(lua:FunkinLua) {
 		if(luaArray != null && !preventLuaRemove) {
 			luaArray.remove(lua);
 		}
 	}
+#end
 
 	var lastStepHit:Int = -1;
 	override function stepHit()
@@ -5026,7 +5028,9 @@ class PlayState extends MusicBeatState
 		callOnScripts('onSectionHit', []);
 	}
 
+  #if LUA_ALLOWED
 	public var closeLuas:Array<FunkinLua> = [];
+  #end
 
 	public function callOnScripts(event:String, args:Array<Dynamic>, ignoreStops:Bool = false, ?exclusions:Array<String>, ?scriptArray:Array<Dynamic>,
 			?ignoreSpecialShit:Bool = true)
