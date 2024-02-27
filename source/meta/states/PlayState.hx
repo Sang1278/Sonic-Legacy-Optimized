@@ -509,11 +509,8 @@ class PlayState extends MusicBeatState
 		}
 		if(SONG.arrowSkin != ''){
 			for(ext in FunkinHScript.hscriptExts){
-				if(FileSystem.exists(Paths.noteskin('${SONG.arrowSkin}.$ext'))){
+				if(OpenFlAssets.exists(Paths.noteskin('${SONG.arrowSkin}.$ext'))){
 					noteskinScript = FunkinHScript.fromFile(Paths.noteskin('${SONG.arrowSkin}.$ext'));
-				}else if(FileSystem.exists(Paths.modsNoteskin('${SONG.arrowSkin}.$ext'))){
-					//Noteskin doesn't exist in assets, trying mods folder
-					noteskinScript = FunkinHScript.fromFile(Paths.modsNoteskin('${SONG.arrowSkin}.$ext'));
 				}else{
 					//Noteskin doesn't exist in assets or mods folder, returning null
 					trace('noteskin script doesnt exist: ${Paths.noteskin('${SONG.arrowSkin}.$ext')}');
@@ -2030,7 +2027,7 @@ class PlayState extends MusicBeatState
 		var events:Array<EventNote> = [];
 		var songName:String = Paths.formatToSongPath(SONG.song);
 		var file:String = Paths.json(songName + '/events');
-		if (FileSystem.exists(Paths.modsJson(songName + '/events')) || FileSystem.exists(file) || OpenFlAssets.exists(file)) {
+		if (OpenFlAssets.exists(Paths.json(songName + '/events')) || OpenFlAssets.exists(file)) {
 		//if () {
 			var eventsData:Array<Dynamic> = Song.loadFromJson('events', songName).events;
 			for (event in eventsData) //Event Notes
