@@ -227,22 +227,14 @@ class Paths
 
 		return null;
 	}
-
 	static public function video(key:String)
 	{
-		#if MODS_ALLOWED
-		var file:String = modsVideo(key);
-		if(FileSystem.exists(file)) {
-			return file;
-		}
-		#end
-		for (i in VIDEO_EXTS) {
-			if (exists('assets/videos/$key.$i',TEXT)) {
-				return 'assets/videos/$key.$i';
-			}
-		}
-		
-		return 'assets/videos/$key.${VIDEO_EXTS[0]}';
+		return Generic.returnPath() + 'assets/videos/$key.$VIDEO_EXT';
+	}
+
+	static public function truevideo(key:String)
+	{
+		return 'assets/videos/$key.$VIDEO_EXT';
 	}
 
 	static public function sound(key:String, ?library:String):Sound
