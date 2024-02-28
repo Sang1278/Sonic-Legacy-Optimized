@@ -43,7 +43,7 @@ jobs:
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null --quiet
-          haxelib install lime 8.1.1
+          haxelib install lime 8.0.2
           haxelib install openfl 9.2.2
           haxelib install flixel 5.2.2
           haxelib install flixel-tools
@@ -51,7 +51,7 @@ jobs:
           haxelib install flixel-addons 2.10.0
           haxelib install tjson
           haxelib install hxjsonast
-          haxelib install hxvlc
+          haxelib install hxvlc 1.2.0
           haxelib git linc_luajit https://github.com/Sirox228/linc_luajit.git
           haxelib install hscript 2.5.0
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
@@ -69,7 +69,8 @@ jobs:
           haxelib set flixel-addons 2.10.0
           haxelib set flixel 5.2.2
           haxelib set openfl 9.2.2
-          haxelib set lime 8.1.1
+          haxelib set lime 8.0.2
+          haxelib set hxvlc 1.2.0
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
