@@ -21,6 +21,9 @@ class InitState extends FlxState
 
     override function create() 
     {
+		#if mobile
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
 
         meta.data.scripts.FunkinHScript.init();
 		Paths.clearStoredMemory();
