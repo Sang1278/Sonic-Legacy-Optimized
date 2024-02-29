@@ -1241,6 +1241,12 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 		uiGroup.cameras = [camHUD];
 		noteGroup.cameras = [camHUD];
+
+   #if mobile
+   addMobileControls(false);
+   mobileControls.visible = false;
+   #end
+
 		for (i in [topBar,bottomBar]) i.cameras = [camOther];
 
 		setOnScripts('playFields', playFields);
@@ -1680,6 +1686,10 @@ class PlayState extends MusicBeatState
 			callOnScripts('onStartCountdown', []);
 			return;
 		}
+
+    #if mobile
+    mobileControls.visible = true;
+    #end
 
 		inCutscene = false;
 		var ret:Dynamic = callOnScripts('onStartCountdown', []);
@@ -2748,7 +2758,7 @@ class PlayState extends MusicBeatState
 		// 	botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
 		// }
 
-		if (controls.PAUSE && startedCountdown && canPause)
+		if (controls.PAUSE #if mobile || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
 			var ret:Dynamic = callOnScripts('onPause', []);
 
@@ -3841,6 +3851,10 @@ class PlayState extends MusicBeatState
 	public var transitioning = false;
 	public function endSong():Void
 	{
+    #if mobile
+    mobileControls.visible = false;
+    #end
+
 		//Should kill you if you tried to cheat
 		if(!startingSong) {
 			notes.forEach(function(daNote:Note) {
