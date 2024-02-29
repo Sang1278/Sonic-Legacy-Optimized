@@ -46,6 +46,15 @@ class NotesSubState extends MusicBeatSubstate
 	public function new() {
 		super();
 
+			#if mobile
+			addVirtualPad(FULL_LEFT, A_B_C);
+			if (ProgressionHandler.isRodent) {
+			 ClientPrefs.padalpha = 0.5;
+			 } else {
+			 ClientPrefs.padalpha = 0.2;
+			}
+			#end
+
 		if(ProgressionHandler.isRodent){
 			var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 			bg.color = 0xFFea71fd;
@@ -110,7 +119,7 @@ class NotesSubState extends MusicBeatSubstate
 				} else if(controls.UI_RIGHT_P) {
 					updateValue(1);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
-				} else if(controls.RESET) {
+				} else if(controls.RESET #if mobile virtualPad.buttonC.justPressed #end) {
 					resetValue(curSelected, typeSelected);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 				}
