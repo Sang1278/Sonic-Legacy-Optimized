@@ -40,6 +40,12 @@ class PauseSubState extends MusicBeatSubstate
 	public function new(x:Float, y:Float)
 	{
 		super();
+
+   #if mobile
+   addVirtualPad(UP_DOWN, A);
+   addVirtualPadCamera(false);
+   #end
+
 		var cam:FlxCamera = FlxG.cameras.list[FlxG.cameras.list.length - 1];
 		if(CoolUtil.difficulties.length < 2) menuItemsOG.remove('Change Difficulty'); //No need to change difficulty if there is only one!
 
