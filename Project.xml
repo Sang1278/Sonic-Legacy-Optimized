@@ -72,7 +72,7 @@
 	<assets path="assets/embeds/music" rename= "assets/music" embed="false" unless="EXE_EMBEDDING"/>
 	<assets path="assets/embeds/shaders" rename= "assets/shaders" embed="false" unless="EXE_EMBEDDING"/>
 	<assets path="assets/embeds/sounds" rename= "assets/sounds" embed="false" unless="EXE_EMBEDDING"/>
-
+	<assets path="mobile" rename="assets/mobile" if="mobile" />
 
 	<!-- <assets path="assets/embeds/videos" rename= "assets/videos" embed="true"/>  -->
 	<!-- <i dont believe embedded videos can be accessed...> -->
