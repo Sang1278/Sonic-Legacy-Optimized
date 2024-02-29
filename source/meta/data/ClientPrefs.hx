@@ -44,6 +44,8 @@ import meta.data.Controls.KeyboardScheme;
 	public var camMovement:Bool = true;
 
 	//gameplay
+	public var padalpha:Float = 0.5;
+	public var hitboxalpha:Float = 0.2;
 	public var controllerMode:Bool = true;
 	public var downScroll:Bool = false;
 	public var middleScroll:Bool = false;
