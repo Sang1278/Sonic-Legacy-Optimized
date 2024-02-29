@@ -144,7 +144,11 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		}
 
 		if (controls.BACK) {
+		  #if desktop
 			close();
+			#else
+			FlxG.resetState();
+			#end
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}
 
@@ -240,7 +244,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				}
 			}
 
-			if(controls.RESET)
+			if(controls.RESET #if mobile virtualPad.buttonC.justPressed #ed)
 			{
 				for (i in 0...optionsArray.length)
 				{
@@ -262,6 +266,9 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				reloadCheckboxes();
 			}
+			#if mobile
+			addVirtualPad(FULL_LEFT, A_B_C);
+			#end
 		}
 
 		if(boyfriend != null && boyfriend.animation.curAnim.finished) {
