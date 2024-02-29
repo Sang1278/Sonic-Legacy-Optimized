@@ -70,7 +70,17 @@ class ControlsSubState extends MusicBeatSubstate {
 	var nextAccept:Int = 5;
 
 	public function new() {
+
 		super();
+
+			#if mobile
+			addVirtualPad(FULL_LEFT, A_B);
+			if (ProgressionHandler.isRodent) {
+			 ClientPrefs.padalpha = 0.5;
+			 } else {
+			 ClientPrefs.padalpha = 0.2;
+			}
+			#end
 
 		if(ProgressionHandler.isRodent){
 			var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
