@@ -49,6 +49,11 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		super();
 
+   #if mobile
+   addVirtualPad(UP_DOWN, A);
+   addVirtualPadCamera(false);
+   #end
+
 		PlayState.instance.setOnScripts('inGameOver', true);
 
 		Conductor.songPosition = 0;
