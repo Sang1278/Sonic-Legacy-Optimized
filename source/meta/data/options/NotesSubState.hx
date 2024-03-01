@@ -49,9 +49,9 @@ class NotesSubState extends MusicBeatSubstate
 			#if mobile
 			addVirtualPad(FULL_LEFT, A_B_C);
 			if (ProgressionHandler.isRodent) {
-			 ClientPrefs.padalpha = 0.5;
+			 ClientPrefs.data.padalpha = 0.5;
 			 } else {
-			 ClientPrefs.padalpha = 0.2;
+			 ClientPrefs.data.padalpha = 0.2;
 			}
 			#end
 
