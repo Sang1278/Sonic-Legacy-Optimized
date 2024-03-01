@@ -53,7 +53,7 @@
 	<define name="TITLE_SCREEN_EASTER_EGG" if="officialBuild"/> <!-- DELETE THE if="officialBuild" for enabling this on an unofficial build -->
 
 	<!--<define name="FINAL_BUILD"/>
-	<define name="EXE_EMBEDDING"/>-->>
+	<define name="EXE_EMBEDDING"/>-->
 
 	<assets path="assets/embeds/images" rename= "assets/images" embed="true" if="EXE_EMBEDDING"/>
 	<assets path="assets/embeds/data" rename= "assets/data" embed="true" if="EXE_EMBEDDING"/>
