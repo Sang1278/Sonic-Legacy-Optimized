@@ -119,7 +119,7 @@ class NotesSubState extends MusicBeatSubstate
 				} else if(controls.UI_RIGHT_P) {
 					updateValue(1);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
-				} else if(controls.RESET #if mobile virtualPad.buttonC.justPressed #end) {
+				} else if(controls.RESET #if mobile || virtualPad.buttonC.justPressed #end) {
 					resetValue(curSelected, typeSelected);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 				}
