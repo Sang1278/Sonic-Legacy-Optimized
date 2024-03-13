@@ -243,29 +243,26 @@ class BaseOptionsMenu extends MusicBeatSubstate
 					clearHold();
 				}
 			}
-
 			if(controls.RESET #if mobile || virtualPad.buttonC.justPressed #end)
 			{
 				for (i in 0...optionsArray.length)
 				{
-
 					var leOption:Option = optionsArray[i];
-					if(leOption.type!='button' && leOption.type != 'label'){
-						leOption.setValue(leOption.defaultValue);
-						if(leOption.type != 'bool')
+					leOption.setValue(leOption.defaultValue);
+					if(leOption.type != 'bool')
+					{
+						if(leOption.type == 'string')
 						{
-							if(leOption.type == 'string')
-							{
-								leOption.curOption = leOption.options.indexOf(leOption.getValue());
-							}
-							updateTextFrom(leOption);
+							leOption.curOption = leOption.options.indexOf(leOption.getValue());
 						}
-						leOption.change();
+						updateTextFrom(leOption);
 					}
+					leOption.change();
 				}
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				reloadCheckboxes();
 			}
+
 			#if mobile
 			addVirtualPad(LEFT_FULL, A_B_C);
 			addVirtualPadCamera();
