@@ -35,14 +35,6 @@ class MiscSubState extends BaseOptionsMenu
 	{
 		title = 'Misc';
 		rpcTitle = 'Miscellaneous Menu'; //for Discord Rich Presence
-			// if you guys ever add more options to misc that dont rely on the thread count
-			var option:Option = new Option("Nothin' here!", //Name
-				"Usually there'd be options about multi-thread loading, but you only have 1 thread to use so no real use", //Description
-				'', //Save data variable name
-				'label', //Variable type
-				true
-			); //Default value
-			addOption(option);
 
 		var option:Option = new Option('GPU Caching',
 		'If enabled, allows assets to be cached directly to the GPU. helps Performance',
