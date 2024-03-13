@@ -53,6 +53,11 @@ class ObituaryGameOver extends MusicBeatSubstate
 	{
 		super();
 
+   #if mobile
+   addVirtualPad(NONE, A_B);
+   addVirtualPadCamera(false);
+   #end
+
 		PlayState.instance.setOnScripts('inGameOver', true);
 
 		Conductor.songPosition = 0;
