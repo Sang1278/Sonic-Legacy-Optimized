@@ -229,7 +229,7 @@ class Paths
 	}
 	static public function video(key:String)
 	{
-		return 'assets/videos/$key.$VIDEO_EXTS';
+		return Sys.getCwd() + 'assets/videos/$key.$VIDEO_EXTS';
 	}
 
 	static public function sound(key:String, ?library:String):Sound
