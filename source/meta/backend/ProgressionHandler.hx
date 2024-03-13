@@ -53,8 +53,8 @@ class ProgressionHandler
 			FlxTransitionableState.defaultTransIn = FadeTransition;
 			FlxTransitionableState.defaultTransOut = FadeTransition;
 
-			FlxG.sound.soundTray.volumeDownSound = 'assets/sounds/SEL_volume';
-			FlxG.sound.soundTray.volumeUpSound = 'assets/sounds/SEL_volume';
+			//FlxG.sound.soundTray.volumeDownSound = 'assets/sounds/SEL_volume';
+			//FlxG.sound.soundTray.volumeUpSound = 'assets/sounds/SEL_volume';
 		}
 
 		trace('curRodentMode: ' + FlxG.save.data.currentlyRodent);
