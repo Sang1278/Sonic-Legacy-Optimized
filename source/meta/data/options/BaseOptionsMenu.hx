@@ -243,7 +243,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 					clearHold();
 				}
 			}
-			if(controls.RESET #if mobile || virtualPad.buttonC.justPressed #end)
+			/*if(controls.RESET #if mobile || virtualPad.buttonC.justPressed #end)
 			{
 				for (i in 0...optionsArray.length)
 				{
@@ -264,10 +264,10 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				}
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				reloadCheckboxes();
-			}
+			}*/
 
 			#if mobile
-			addVirtualPad(LEFT_FULL, A_B_C);
+			addVirtualPad(LEFT_FULL, A_B);
 			addVirtualPadCamera(false);
 			#end
 		}
