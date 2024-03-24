@@ -134,11 +134,11 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	var holdValue:Float = 0;
 	override function update(elapsed:Float)
 	{
-		if (controls.UI_UP_P)
+		if (controls.UI_UP_P #if mobile || virtualPad.buttonUp.justPressed #end)
 		{
 			changeSelection(-1);
 		}
-		if (controls.UI_DOWN_P)
+		if (controls.UI_DOWN_P #if mobile || virtualPad.buttonDown.justPressed #end)
 		{
 			changeSelection(1);
 		}
@@ -174,12 +174,12 @@ class BaseOptionsMenu extends MusicBeatSubstate
 					curOption.callback();
 			} else if(curOption.type != 'label') {
 				if(controls.UI_LEFT || controls.UI_RIGHT) {
-					var pressed = (controls.UI_LEFT_P || controls.UI_RIGHT_P);
+					var pressed = #if desktop (controls.UI_LEFT_P || controls.UI_RIGHT_P); #else (virtualPad.buttonLeft.justPressed || virtualPad buttonRight.justPressed); #end
 					if(holdTime > 0.5 || pressed) {
 						if(pressed) {
 							var add:Dynamic = null;
 							if(curOption.type != 'string') {
-								add = controls.UI_LEFT ? -curOption.changeValue : curOption.changeValue;
+								add = #if desktop controls.UI_LEFT #else virtualPad.buttonLeft.justPressed #end ? -curOption.changeValue : curOption.changeValue;
 							}
 
 							switch(curOption.type)
@@ -202,7 +202,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 								case 'string':
 									var num:Int = curOption.curOption; //lol
-									if(controls.UI_LEFT_P) --num;
+									if(#if desktop controls.UI_LEFT_P #else virtualPad.buttonLeft.justPressed #end) --num;
 									else num++;
 
 									if(num < 0) {
@@ -219,7 +219,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 							curOption.change();
 							FlxG.sound.play(Paths.sound('scrollMenu'));
 						} else if(curOption.type != 'string') {
-							holdValue += curOption.scrollSpeed * elapsed * (controls.UI_LEFT ? -1 : 1);
+							holdValue += curOption.scrollSpeed * elapsed * (#if desktop controls.UI_LEFT #else virtualPad.buttonLeft.justPressed #end ? -1 : 1);
 							if(holdValue < curOption.minValue) holdValue = curOption.minValue;
 							else if (holdValue > curOption.maxValue) holdValue = curOption.maxValue;
 
@@ -239,7 +239,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 					if(curOption.type != 'string') {
 						holdTime += elapsed;
 					}
-				} else if(controls.UI_LEFT_R || controls.UI_RIGHT_R) {
+				} else if(#if desktop controls.UI_LEFT_R || controls.UI_RIGHT_R #else virtualPad.buttonLeft.justReleased || virtualPad.buttonRight.justReleased #end) {
 					clearHold();
 				}
 			}
