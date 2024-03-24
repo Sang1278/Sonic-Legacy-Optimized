@@ -51,6 +51,7 @@ import meta.data.Controls.KeyboardScheme;
 	public var middleScroll:Bool = false;
 	public var opponentStrums:Bool = true;
 	public var ghostTapping:Bool = true;
+	public var shaders:Bool = true;
 	public var noReset:Bool = false;
 	public var hitsoundVolume:Float = 0;
 	public var ratingOffset:Int = 0;
