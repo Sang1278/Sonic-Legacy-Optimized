@@ -179,7 +179,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 						if(pressed) {
 							var add:Dynamic = null;
 							if(curOption.type != 'string') {
-								add = #if desktop controls.UI_LEFT #else virtualPad.buttonLeft.justPressed #end ? -curOption.changeValue : curOption.changeValue;
+								add = controls.UI_LEFT ? -curOption.changeValue : curOption.changeValue;
 							}
 
 							switch(curOption.type)
@@ -219,7 +219,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 							curOption.change();
 							FlxG.sound.play(Paths.sound('scrollMenu'));
 						} else if(curOption.type != 'string') {
-							holdValue += curOption.scrollSpeed * elapsed * (#if desktop controls.UI_LEFT #else virtualPad.buttonLeft.justPressed #end ? -1 : 1);
+							holdValue += curOption.scrollSpeed * elapsed * (controls.UI_LEFT ? -1 : 1);
 							if(holdValue < curOption.minValue) holdValue = curOption.minValue;
 							else if (holdValue > curOption.maxValue) holdValue = curOption.maxValue;
 
