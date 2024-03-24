@@ -177,7 +177,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				  #if desktop
 					var pressed = (controls.UI_LEFT_P || controls.UI_RIGHT_P);
 					#else
-					var pressed = (virtualPad.buttonLeft.justPressed || virtualPad buttonRight.justPressed);
+					var pressed = (virtualPad.buttonLeft.justPressed || virtualPad.buttonRight.justPressed);
 					#end
 					if(holdTime > 0.5 || pressed) {
 						if(pressed) {
