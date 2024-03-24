@@ -43,7 +43,7 @@ function onLoad(){
 
     for(i in thirdBG) i.visible = false;
 
-    if (!ClientPrefs.data.lowQuality) {
+    if (!ClientPrefs.data.lowQuality && ClientPrefs.shaders) {
         heatShader = newShader('heatShader');
     }
 
@@ -276,6 +276,7 @@ function onEvent(eventName, value1, value2){
                     game.defaultCamZoom = game.camGame.zoom;
                     trace(game.camGame.zoom);
                 }});
+                if (ClientPrefs.shaders)
                 addShader(crtShader);
 
                 FlxTween.tween(fuckassOverlay, {alpha: 0},0.5, {ease: FlxEase.sineOut});
@@ -425,7 +426,7 @@ function onEvent(eventName, value1, value2){
             case 'evil':
                 game.camHUD.flash(0xFFFF0000, 0.5);
                 modManager.setValue('drunk',0.2);
-                if (!ClientPrefs.data.lowQuality) {
+                if (!ClientPrefs.data.lowQuality && ClientPrefs.shaders) {
                     addShader(heatShader);
                 }
 
