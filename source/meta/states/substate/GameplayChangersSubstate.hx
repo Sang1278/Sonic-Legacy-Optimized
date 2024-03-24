@@ -153,6 +153,12 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 
 		changeSelection();
 		reloadCheckboxes();
+
+    #if mobile
+    addVirtualPad(LEFT_FULL, A_B);
+    addVirtualPad(false);
+    #end
+
 	}
 
 	var nextAccept:Int = 5;
@@ -160,11 +166,11 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 	var holdValue:Float = 0;
 	override function update(elapsed:Float)
 	{
-		if (controls.UI_UP_P)
+		if (controls.UI_UP_P #if mobile || virtualPad.buttonUp.justPressed #end)
 		{
 			changeSelection(-1);
 		}
-		if (controls.UI_DOWN_P)
+		if (controls.UI_DOWN_P #if mobile || virtualPad.buttonDown.justPressed #end)
 		{
 			changeSelection(1);
 		}
@@ -194,7 +200,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 				}
 			} else {
 				if(controls.UI_LEFT || controls.UI_RIGHT) {
-					var pressed = (controls.UI_LEFT_P || controls.UI_RIGHT_P);
+					var pressed = #if desktop (controls.UI_LEFT_P || controls.UI_RIGHT_P); #else (virtualPad.buttonLeft.justPressed || virtualPad buttonRight.justPressed); #end
 					if(holdTime > 0.5 || pressed) {
 						if(pressed) {
 							var add:Dynamic = null;
@@ -222,7 +228,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 
 								case 'string':
 									var num:Int = curOption.curOption; //lol
-									if(controls.UI_LEFT_P) --num;
+									if(#if desktop controls.UI_LEFT_P #else virtualPad.buttonLeft.justPressed #end) --num;
 									else num++;
 
 									if(num < 0) {
@@ -279,12 +285,12 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 					if(curOption.type != 'string') {
 						holdTime += elapsed;
 					}
-				} else if(controls.UI_LEFT_R || controls.UI_RIGHT_R) {
+				} else if(#if desktop controls.UI_LEFT_R || controls.UI_RIGHT_R #else virtualPad.buttonLeft.justReleased || virtualPad.buttonRight.justReleased #end) {
 					clearHold();
 				}
 			}
 
-			if(controls.RESET)
+			/*if(controls.RESET)
 			{
 				for (i in 0...optionsArray.length)
 				{
@@ -313,7 +319,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 				}
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				reloadCheckboxes();
-			}
+			}*/
 		}
 
 		if(nextAccept > 0) {
