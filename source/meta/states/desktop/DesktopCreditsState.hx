@@ -615,7 +615,7 @@ class DesktopCreditsState extends MusicBeatState
 
     override function update(elapsed:Float) {
 
-        if (controls.BACK) {
+        if (controls.BACK  #if mobile || FlxG.android.justReleased.BACK #end) {
             if (buddyListMode) {
                 gobackpls(true);
             }
