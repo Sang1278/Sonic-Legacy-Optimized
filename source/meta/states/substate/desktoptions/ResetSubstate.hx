@@ -7,7 +7,7 @@ import meta.states.substate.MusicBeatSubstate;
 class ResetSubstate extends MusicBeatSubstate
 {
 
-   var resetString:String = 'Warning!\nDoing this will erase data permanently from this device!\nPlease proceed with caution.\n Tip: to open Mobile Keyboard, press BACK button on your phone.';
+   var resetString:String = 'Warning!\nDoing this will erase data permanently from this device!\nPlease proceed with caution.';
    var text:FlxTypeText;
    var options:FlxTypeText = null;
    var deletingProgress:Bool = false;
@@ -25,14 +25,14 @@ class ResetSubstate extends MusicBeatSubstate
 
         cameras = [DesktopOptionsState.instance.display];
         #if mobile
-        addVirtualPad(NONE, A);
+        addVirtualPad(NONE, A_B_C_X_Y);
         addVirtualPadCamera(false);
         #end
     }
 
 
     function spawnOptions() {
-        options = new FlxTypeText(355.5, 252.15,366,'\n\n\n\n\nPRESS THE CORRESPONDING NUMBER TO CONTINUE.\n\n1: Reset Progression Data\n\n2: Reset Option Data \n\n3: Reset all Data');
+        options = new FlxTypeText(355.5, 252.15,366,'\n\n\n\n\nPRESS THE CORRESPONDING NUMBER TO CONTINUE.\n\nButton C: Reset Progression Data\n\nButton X: Reset Option Data \n\nButton Y: Reset all Data');
         //options.sounds = [for (i in 1...5)FlxG.sound.load(Paths.sound('keyboard/click$i'))];   
         options.setFormat(Paths.font("cmd.ttf"), 16, FlxColor.WHITE, LEFT);
         add(options);
@@ -62,15 +62,15 @@ class ResetSubstate extends MusicBeatSubstate
         if (controls.ACCEPT && allowToGo)leaveMenu();
 
         if (options != null) {
-            if (FlxG.keys.justPressed.ONE) {
+            if (#if desktop FlxG.keys.justPressed.ONE #else virtualPad.buttonC.justPressed #end) {
                 deleteData(true);
                 clicked = true;
             }
-            else if (FlxG.keys.justPressed.TWO) {
+            else if (#if desktop FlxG.keys.justPressed.TWO #else virtualPad.buttonX.justPressed #end) {
                 deleteData(false,true);
                 clicked = true;
             }
-            else if (FlxG.keys.justPressed.THREE) {
+            else if (#if desktop FlxG.keys.justPressed.THREE #else virtualPad.buttonY.justPressed #end) {
                 clicked = true;
                 deleteData(true,true);
             }
