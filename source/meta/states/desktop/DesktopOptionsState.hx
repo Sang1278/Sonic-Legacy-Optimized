@@ -186,6 +186,9 @@ class DesktopOptionsState extends MusicBeatState
         }
         super.create();
 
+        #if mobile
+        addVirtualPad(UP_DOWN, A_B_X_Y);
+        #end
 
         for (i in members) {
             if (i is FlxSprite && !(i is FlxText)) {
@@ -230,6 +233,18 @@ class DesktopOptionsState extends MusicBeatState
     override function update(elapsed:Float) {
         super.update(elapsed);
 
+    #if mobile
+		if (virtualPad.buttonX.justPressed)
+		{
+			removeVirtualPad();
+			openSubState(new mobile.MobileControlsSubState());
+		}
+		if (virtualPad.buttonY.justPressed) {
+			removeVirtualPad();
+			openSubState(new mobile.AndroidSettingsSubState());
+		}
+		#end
+
         newCursor.setPosition(FlxG.mouse.x, FlxG.mouse.y);
 
         if (!inSubState) {
@@ -247,7 +262,6 @@ class DesktopOptionsState extends MusicBeatState
                     MusicBeatState.switchState(new PlayState());
                     FlxG.sound.music.volume = 0;
                 }
-
             }
     
             if(canSelect && FlxG.mouse.overlaps(closeBox) && FlxG.mouse.justPressed){
@@ -287,8 +301,14 @@ class DesktopOptionsState extends MusicBeatState
                     inSubState = true;
                     switch(mainOptionsList[option][0]){
                         case "NOTES":
+                        #if mobile
+                        removeVirtualPad();
+                        #end
                             openSubState(new meta.states.substate.desktoptions.DesktopNoteSettingsSubstate());
                         case "CONTROLS":
+                        #if mobile
+                        removeVirtualPad();
+                        #end
                             for (camera in [display,camCRT,FlxG.camera]){
                                     FlxTween.tween(FlxG.camera, {alpha: 0}, 1, {ease: FlxEase.cubeIn});
                                     FlxTween.tween(newCursor, {alpha: 0}, 1, {ease: FlxEase.cubeIn});
@@ -297,22 +317,43 @@ class DesktopOptionsState extends MusicBeatState
                                 }});
                             }
                         case "DELAY-COMBO":
+                        #if mobile
+                        removeVirtualPad();
+                        #end
                             LoadingState.loadAndSwitchState(new meta.data.options.NoteOffsetState());
         
                         case "GRAPHICS":
+                        #if mobile
+                        removeVirtualPad();
+                        #end
                             openSubState(new meta.states.substate.desktoptions.DesktopGraphicsSettings());
         
                         case "VISUALS-UI":
+                        #if mobile
+                        removeVirtualPad();
+                        #end
                             openSubState(new meta.states.substate.desktoptions.DesktopVisualsUISettings());
          
                         case "GAMEPLAY":
+                        #if mobile
+                        removeVirtualPad();
+                        #end
                             openSubState(new meta.states.substate.desktoptions.DesktopGameplaySettings());
         
                         case "LOADING":
+                        #if mobile
+                        removeVirtualPad();
+                        #end
                             openSubState(new meta.states.substate.desktoptions.DesktopMiscSettings());
                         case 'GAMEPLAY-PREFERENCES':
+                        #if mobile
+                        removeVirtualPad();
+                        #end
                             openSubState(new meta.states.substate.desktoptions.GameplayPrefs());     
                         case "RESET":
+                        #if mobile
+                        removeVirtualPad();
+                        #end
                             openSubState(new meta.states.substate.desktoptions.ResetSubstate());
         
                     }
