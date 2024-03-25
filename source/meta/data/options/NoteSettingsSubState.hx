@@ -43,7 +43,7 @@ class NoteSettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Customize',
-			'Change your note colours\n[Press Enter]',
+			'Change your note colours\n[Press A]',
 			'swapNoteOption',
 			'button',
 			true);
