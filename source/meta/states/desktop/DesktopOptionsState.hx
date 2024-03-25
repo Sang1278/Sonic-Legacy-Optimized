@@ -188,6 +188,7 @@ class DesktopOptionsState extends MusicBeatState
 
         #if mobile
         addVirtualPad(UP_DOWN, A_B_X_Y);
+        addVirtualPadCamera(false);
         #end
 
         for (i in members) {
