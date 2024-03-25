@@ -76,7 +76,7 @@ class ResetScoreSubState extends MusicBeatSubstate
 
     #if mobile
     addVirtualPad(LEFT_RIGHT, A_B);
-    addVirtualPad(false);
+    addVirtualPadCamera(false);
     #end
 
 	}
