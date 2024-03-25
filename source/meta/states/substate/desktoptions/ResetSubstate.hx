@@ -24,6 +24,10 @@ class ResetSubstate extends MusicBeatSubstate
         text.start(0.025,false,false,null,spawnOptions);
 
         cameras = [DesktopOptionsState.instance.display];
+        #if mobile
+        addVirtualPad(NONE, B);
+        addVirtualPadCamera(false);
+        #end
     }
 
 
@@ -41,7 +45,7 @@ class ResetSubstate extends MusicBeatSubstate
 			      close();
 			      #else
 			      FlxG.resetState();
-			       #end 
+			      #end 
     }
     
     override function update(elapsed:Float) {
@@ -93,7 +97,7 @@ class ResetSubstate extends MusicBeatSubstate
                 }
             }
             else {
-                options.resetText('\nPress Enter to Continue.');
+                options.resetText('\nPress B to Continue.');
                 options.start();
                 options.visible = true;
                 allowToGo=true;
