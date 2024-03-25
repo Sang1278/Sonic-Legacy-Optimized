@@ -438,7 +438,7 @@ class JermaState extends MusicBeatState
 
             camMovement();
 
-            if (controls.BACK && !introControlLock) {
+            if (controls.BACK #if mobile || FlxG.android.justReleased.BACK #end && !introControlLock) {
                 FlxG.sound.play(Paths.sound('SEL_back'));
                 DesktopMenuState.fromMenu = true;
                 DesktopMenuState.whichMenu = "jerma";
@@ -936,7 +936,7 @@ class GallerySubstate extends MusicBeatSubstate {
 
         if (controls.UI_RIGHT_P) clickedOption(1);
         if (controls.UI_LEFT_P) clickedOption(0);
-        if (controls.BACK) {
+        if (controls.BACK #if mobile || FlxG.android.justReleased.BACK #end) {
             clickedOption(2);
             leaveMenu();
         };
@@ -1267,7 +1267,7 @@ class BookSubstate extends MusicBeatSubstate {
         FlxTween.tween(black, {alpha: 0.5}, 1, {ease: FlxEase.quadOut});
     }
     override public function update(elapsed:Float){
-        if((controls.BACK || FlxG.mouse.justPressed) && canSelect && book.getCurAnimName() == 'open'){
+        if((controls.BACK #if mobile || FlxG.android.justReleased.BACK #end || FlxG.mouse.justPressed) && canSelect && book.getCurAnimName() == 'open'){
             canSelect = false;
             book.y+=20;
             FlxTween.tween(book,{y:book.y-20},0.4,{ease:FlxEase.expoOut,onComplete: Void->{
