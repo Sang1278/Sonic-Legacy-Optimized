@@ -64,7 +64,7 @@ class CrashReportSubstate extends FlxState {
 	override function update(elapsed:Float):Void {
 		super.update(elapsed);
 
-		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
+		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
 
 		#if mobile
 		for (touch in FlxG.touches.list)
