@@ -122,6 +122,11 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		changeSelection();
 		reloadCheckboxes();
+
+			#if mobile
+			addVirtualPad(LEFT_FULL, A_B);
+			addVirtualPadCamera(false);
+			#end
 	}
 
 	public function addOption(option:Option) {
@@ -269,11 +274,6 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				reloadCheckboxes();
 			}*/
-
-			#if mobile
-			addVirtualPad(LEFT_FULL, A_B);
-			addVirtualPadCamera(false);
-			#end
 		}
 
 		if(boyfriend != null && boyfriend.animation.curAnim.finished) {
