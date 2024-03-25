@@ -174,7 +174,7 @@ class DesktopSongSelectState extends MusicBeatState
     }
     
     override function update(elapsed:Float) {
-        if (controls.BACK && !choosingDiff) {
+        if (controls.BACK #if mobile || FlxG.android.justReleased.BACK #end && !choosingDiff) {
             display.alpha = 0;
             new FlxTimer().start(1.7, function(start:FlxTimer){
                 FlxTransitionableState.skipNextTransIn = true;
