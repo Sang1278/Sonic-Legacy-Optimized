@@ -10,7 +10,7 @@ class DesktopMiscSettings extends DesktopBaseOptions
 
 		var maxThreads:Int = Std.parseInt(Sys.getEnv("NUMBER_OF_PROCESSORS"));
 
-			var option:Option = new Option('Multi-thread Loading', //Name
+			var option:DesktopOption = new DesktopOption('Multi-thread Loading', //Name
 				'If checked, the mod can use multiple threads to speed up loading times on some songs.\nRecommended to leave on, unless it causes crashing', //Description
 				'multicoreLoading', //Save data variable name
 				'bool', //Variable type
@@ -18,7 +18,7 @@ class DesktopMiscSettings extends DesktopBaseOptions
 			); //Default value
 			addOption(option);
 
-			var option:Option = new Option('Loading Threads', //Name
+			var option:DesktopOption = new DesktopOption('Loading Threads', //Name
 				'How many threads the game can use to load graphics when using Multi-thread Loading.\nThe maximum amount of threads depends on your processor', //Description
 				'loadingThreads', //Save data variable name
 				'int', //Variable type
