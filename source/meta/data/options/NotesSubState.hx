@@ -191,7 +191,11 @@ class NotesSubState extends MusicBeatSubstate
 
 		if (controls.BACK || (changingNote && controls.ACCEPT)) {
 			if(!changingNote) {
-				close();
+		  #if desktop
+			close();
+			#else
+			FlxG.resetState();
+			#end
 				if(!ProgressionHandler.isRodent) meta.states.desktop.DesktopOptionsState.monitor.visible = true;
 			} else {
 				changeSelection();
