@@ -233,7 +233,7 @@ class DesktopOptionsState extends MusicBeatState
         newCursor.setPosition(FlxG.mouse.x, FlxG.mouse.y);
 
         if (!inSubState) {
-            if (controls.BACK && inMain) {
+            if (controls.BACK #if mobile || FlxG.android.justReleased.BACK #end && inMain) {
                 if (!OptionsState.onPlayState) {
                     FlxTransitionableState.skipNextTransIn = true;
                     FlxTransitionableState.skipNextTransOut = true;
