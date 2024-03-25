@@ -75,11 +75,7 @@ class ControlsSubState extends MusicBeatSubstate {
 
 			#if mobile
 			addVirtualPad(LEFT_FULL, A_B);
-			if (ProgressionHandler.isRodent) {
-			 ClientPrefs.data.padalpha = 0.5;
-			 } else {
-			 ClientPrefs.data.padalpha = 0.2;
-			}
+      addVirtualPadCamera(false);
 			#end
 
 		if(ProgressionHandler.isRodent){
