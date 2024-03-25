@@ -7,7 +7,7 @@ import meta.states.substate.MusicBeatSubstate;
 class ResetSubstate extends MusicBeatSubstate
 {
 
-   var resetString:String = 'Warning!\nDoing this will erase data permanently from this device!\nPlease proceed with caution.';
+   var resetString:String = 'Warning!\nDoing this will erase data permanently from this device!\nPlease proceed with caution.\n Tip: to open Mobile Keyboard, press BACK button on your phone.';
    var text:FlxTypeText;
    var options:FlxTypeText = null;
    var deletingProgress:Bool = false;
@@ -24,7 +24,6 @@ class ResetSubstate extends MusicBeatSubstate
         text.start(0.025,false,false,null,spawnOptions);
 
         cameras = [DesktopOptionsState.instance.display];
-
     }
 
 
@@ -38,11 +37,20 @@ class ResetSubstate extends MusicBeatSubstate
 
     function leaveMenu() {
         DesktopOptionsState.instance.returning();
-        close();  
+		       #if desktop
+			      close();
+			      #else
+			      FlxG.resetState();
+			       #end 
     }
     
     override function update(elapsed:Float) {
         super.update(elapsed);
+
+        #if mobile
+				if (FlxG.android.justReleased.BACK)
+			  FlxG.stage.window.textInputEnabled = true;
+			  #end
 
         if (controls.BACK) {
             leaveMenu();
