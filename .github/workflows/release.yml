@@ -1,36 +1,38 @@
 name: Release
 on: workflow_dispatch
 jobs:
-  Android:
+  Build:
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions:
+        contents: write
+        actions: write
     steps:
       - name: Checkout
         uses: actions/checkout@main
+        with:
+          submodules: true
+
       - name: Setup Android NDK
-        uses: nttld/setup-ndk@main
         id: setup-ndk
+        uses: nttld/setup-ndk@main
         with:
           ndk-version: r21e
-
       - name: Setup Java JDK
+
         uses: actions/setup-java@main
         with:
           distribution: 'zulu'
-          java-version: 18
-
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@main
+          java-version: '11'
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@v1.2.0
+        uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.2.5
 
-     - name: Installing Libraries
+      - name: Installing Libraries
         run: |
           haxelib setup ~/haxelib
-          haxelib install hxcpp 4.2.1 > /dev/null --quiet
+          haxelib install hxcpp > /dev/null --quiet
           haxelib install lime 8.0.2
           haxelib install openfl 9.2.2
           haxelib install flixel 5.2.2
@@ -59,12 +61,11 @@ jobs:
           haxelib set openfl 9.2.2
           haxelib set lime 8.0.2
           haxelib set hxvlc 1.2.0
-          haxelib set hxcpp 4.2.1
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Building
-        run: haxelib run lime build android -release
+        run: haxelib run lime build android -final
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main
