@@ -142,6 +142,10 @@ class GameplayPrefs extends MusicBeatSubstate
 		reloadCheckboxes();
 
         cameras = [DesktopOptionsState.instance.display];
+       #if mobile
+       addVirtualPad(LEFT_RIGHT, A_B);
+       addVirtualPadCamera(false);
+       #end
 	}
 
 	var nextAccept:Int = 5;
@@ -160,7 +164,11 @@ class GameplayPrefs extends MusicBeatSubstate
 
 		if (controls.BACK) {
             DesktopOptionsState.instance.returning();
-			close();
+		       #if desktop
+			      close();
+			      #else
+			      FlxG.resetState();
+			       #end
 			ClientPrefs.saveSettings();
             FlxG.sound.play(Paths.sound('keyboard/click${FlxG.random.int(1,3)}'));
 		}
