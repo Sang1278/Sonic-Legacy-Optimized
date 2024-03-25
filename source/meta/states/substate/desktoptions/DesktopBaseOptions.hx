@@ -53,6 +53,7 @@ class DesktopBaseOptions extends MusicBeatSubstate
     public function new(startX:Float = 0, startY:Float = 0)
     {
         super();
+
         this.startX = startX;
         this.startY = startY;
 
@@ -109,6 +110,11 @@ class DesktopBaseOptions extends MusicBeatSubstate
         changeSelection();
         reloadCheckboxes();
         cameras = [DesktopOptionsState.instance.display];
+
+			#if mobile
+			addVirtualPad(LEFT_FULL, A_B);
+			addVirtualPadCamera(false);
+			#end
     }
 
     public function addOption(option:DesktopOption) {
@@ -132,7 +138,11 @@ class DesktopBaseOptions extends MusicBeatSubstate
                 }
         
                 if (controls.BACK) {
-                    close();
+		               #if desktop
+			             close();
+			             #else
+			             FlxG.resetState();
+			             #end
                     //FlxG.sound.play(Paths.sound('cancelMenu'));
                     DesktopOptionsState.instance.returning();
                     ClientPrefs.saveSettings();
@@ -141,8 +151,12 @@ class DesktopBaseOptions extends MusicBeatSubstate
 
                 if(FlxG.mouse.overlaps(DesktopOptionsState.closeBox) && FlxG.mouse.justPressed)
                 {
-                    close();
-                    FlxTransitionableState.skipNextTransIn = true;
+                  #if desktop
+			             close();
+			             #else
+			             FlxG.resetState();
+			             #end
+                   FlxTransitionableState.skipNextTransIn = true;
                     FlxTransitionableState.skipNextTransOut = true;
                     DesktopMenuState.fromMenu = true;
                     DesktopMenuState.whichMenu = "song";
