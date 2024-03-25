@@ -103,7 +103,7 @@ class ResetScoreSubState extends MusicBeatSubstate
 			close();
 			#else
 			FlxG.resetState();
-			#end;
+			#end
 		} else if(controls.ACCEPT) {
 			if(onYes) {
 				if(week == -1) {
