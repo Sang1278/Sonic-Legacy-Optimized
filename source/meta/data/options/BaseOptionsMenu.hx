@@ -134,11 +134,11 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	var holdValue:Float = 0;
 	override function update(elapsed:Float)
 	{
-		if (controls.UI_UP_P #if mobile || virtualPad.buttonUp.justPressed #end)
+		if (#if desktop controls.UI_UP_P #else virtualPad.buttonUp.justPressed #end)
 		{
 			changeSelection(-1);
 		}
-		if (controls.UI_DOWN_P #if mobile || virtualPad.buttonDown.justPressed #end)
+		if (#if desktop controls.UI_DOWN_P #else virtualPad.buttonDown.justPressed #end)
 		{
 			changeSelection(1);
 		}
