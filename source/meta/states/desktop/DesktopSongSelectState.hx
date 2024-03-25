@@ -223,7 +223,7 @@ class DesktopSongSelectState extends MusicBeatState
 
     function diffSelectStuff() {
         //insert stuff here
-        if (controls.BACK || !canSelect) {
+        if (controls.BACK #if mobile || FlxG.android.justReleased.BACK #end || !canSelect) {
             choosingDiff = false;
             diffBG.animation.play("close", true);
             remove(diffOptions);
