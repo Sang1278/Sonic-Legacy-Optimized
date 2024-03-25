@@ -92,7 +92,7 @@ class QuantNotesSubState extends MusicBeatSubstate
 		super();
 
 			#if mobile
-			addVirtualPad(LEFT_FULL, A_B);
+			addVirtualPad(LEFT_FULL, A_B_C);
 			if (ProgressionHandler.isRodent) {
 			 ClientPrefs.data.padalpha = 0.5;
 			 } else {
@@ -171,7 +171,7 @@ class QuantNotesSubState extends MusicBeatSubstate
 				} else if(controls.UI_RIGHT_P) {
 					updateValue(1);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
-				} else if(controls.RESET) {
+				} else if(controls.RESET #if mobile || virtualPad.buttonC.justPressed #end) {
 					resetValue(curSelected, typeSelected);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 				}
