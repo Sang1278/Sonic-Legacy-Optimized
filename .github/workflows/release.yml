@@ -25,7 +25,9 @@ jobs:
       - name: Setup Haxe
         uses: krdlab/setup-haxe@v1.2.0
         with:
-          haxe-version: 4.2.5      - name: Installing Libraries
+          haxe-version: 4.2.5
+
+     - name: Installing Libraries
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null --quiet
