@@ -91,6 +91,14 @@ class QuantNotesSubState extends MusicBeatSubstate
 	public function new() {
 		super();
 
+			#if mobile
+			addVirtualPad(LEFT_FULL, A_B);
+			if (ProgressionHandler.isRodent) {
+			 ClientPrefs.data.padalpha = 0.5;
+			 } else {
+			 ClientPrefs.data.padalpha = 0.2;
+			}
+			#end
 
 		if(ProgressionHandler.isRodent){
 			var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
@@ -235,7 +243,11 @@ class QuantNotesSubState extends MusicBeatSubstate
 
 		if (controls.BACK || (changingNote && controls.ACCEPT)) {
 			if(!changingNote) {
-				close();
+		  #if desktop
+			close();
+			#else
+			FlxG.resetState();
+			#end
 				if(!ProgressionHandler.isRodent) meta.states.desktop.DesktopOptionsState.monitor.visible = true;
 			} else {
 				changeSelection();
