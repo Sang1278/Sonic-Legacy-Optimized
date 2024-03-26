@@ -143,7 +143,7 @@ class GameplayPrefs extends MusicBeatSubstate
 
         cameras = [DesktopOptionsState.instance.display];
        #if mobile
-       addVirtualPad(LEFT_RIGHT, A_B);
+       addVirtualPad(LEFT_FULL, A_B);
        addVirtualPadCamera(false);
        #end
 	}
