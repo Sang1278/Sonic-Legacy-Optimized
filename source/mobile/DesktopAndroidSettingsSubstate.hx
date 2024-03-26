@@ -27,7 +27,7 @@ import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
 import meta.data.Controls;
 import meta.states.substate.desktoptions.BaseOptions;
-import meta.data.options.Option;
+import meta.data.options.DesktopOption;
 import openfl.Lib;
 
 using StringTools;
@@ -39,7 +39,7 @@ class DesktopAndroidSettingsSubstate extends DesktopBaseOptions
 		title = 'Android Controls Settings';
 		rpcTitle = 'Android Controls Settings Menu'; // hi, you can ask what is that, i will answer it's all what you needed lol.
 
-		var option:Option = new Option('Vpad Opacity', // mariomaster was here again
+		var option:DesktopOption = new DesktopOption('Vpad Opacity', // mariomaster was here again
 			'Changes Vpad Opacity -yeah ', 'padalpha', 'float', 0.5);
 		option.scrollSpeed = 1.6;
 		option.minValue = 0.1; // prevent invisible vpad
@@ -48,7 +48,7 @@ class DesktopAndroidSettingsSubstate extends DesktopBaseOptions
 		option.decimals = 2;
 		addOption(option);
 
-		var option:Option = new Option('Hitbox Opacity', // mariomaster is dead :00000
+		var option:DesktopOption = new DesktopOption('Hitbox Opacity', // mariomaster is dead :00000
 			'Changes Hitbox opacity -what', 'hitboxalpha', 'float', 0.2);
 		option.scrollSpeed = 1.6;
 		option.minValue = 0.0;
