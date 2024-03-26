@@ -89,6 +89,6 @@ jobs:
         with:
           repo_token: ${{secrets.GITHUB_TOKEN}}
           prerelease: false
-          automatic_release_tag: 'v1.0.1'
-          title: ' Android Port v1.0.1'
+          automatic_release_tag: 'v1.1.0'
+          title: ' Android Port v1.1.0'
           files: ${{github.workspace}}/FNF Rodentrap-debug.apk
