@@ -36,8 +36,6 @@ class DesktopAndroidSettingsSubstate extends DesktopBaseOptions
 {
 	public function new()
 	{
-		title = 'Android Controls Settings';
-		rpcTitle = 'Android Controls Settings Menu'; // hi, you can ask what is that, i will answer it's all what you needed lol.
 
 		var option:DesktopOption = new DesktopOption('Vpad Opacity', // mariomaster was here again
 			'Changes Vpad Opacity -yeah ', 'padalpha', 'float', 0.5);
