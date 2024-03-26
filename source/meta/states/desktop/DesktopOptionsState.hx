@@ -237,12 +237,25 @@ class DesktopOptionsState extends MusicBeatState
     #if mobile
 		if (virtualPad.buttonX.justPressed)
 		{
+	
 			removeVirtualPad();
+	                            for (camera in [display,camCRT,FlxG.camera]){
+                                    FlxTween.tween(FlxG.camera, {alpha: 0}, 1, {ease: FlxEase.cubeIn});
+                                    FlxTween.tween(newCursor, {alpha: 0}, 1, {ease: FlxEase.cubeIn});
+                                    FlxTween.tween(camera, {zoom: 4}, 1, {ease: FlxEase.cubeIn, onComplete: Void -> {
 			openSubState(new mobile.MobileControlsSubState());
+                                }});
+                            }
 		}
 		if (virtualPad.buttonY.justPressed) {
 			removeVirtualPad();
+                            for (camera in [display,camCRT,FlxG.camera]){
+                                    FlxTween.tween(FlxG.camera, {alpha: 0}, 1, {ease: FlxEase.cubeIn});
+                                    FlxTween.tween(newCursor, {alpha: 0}, 1, {ease: FlxEase.cubeIn});
+                                    FlxTween.tween(camera, {zoom: 4}, 1, {ease: FlxEase.cubeIn, onComplete: Void -> {
 			openSubState(new mobile.AndroidSettingsSubState());
+                                }});
+                            }
 		}
 		#end
 
