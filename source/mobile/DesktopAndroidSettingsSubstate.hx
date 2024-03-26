@@ -26,7 +26,7 @@ import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
 import meta.data.Controls;
-import meta.states.substate.desktoptions.BaseOptions;
+import meta.states.substate.desktoptions.DesktopBaseOptions;
 import meta.data.options.DesktopOption;
 import openfl.Lib;
 
