@@ -244,11 +244,17 @@ class StoryMenuState extends MusicBeatState
 
 			if(FlxG.keys.justPressed.CONTROL #if mobile || virtualPad.buttonX.justPressed #end)
 			{
+			  #if mobile
+			  removeVirtualPad();
+			  #end
 				persistentUpdate = false;
 				openSubState(new GameplayChangersSubstate());
 			}
 			else if(controls.RESET #if mobile || virtualPad.buttonY.justPressed #end)
 			{
+			  #if mobile
+			  removeVirtualPad();
+			  #end
 				persistentUpdate = false;
 				openSubState(new ResetScoreSubState('', curDifficulty, '', curWeek));
 				//FlxG.sound.play(Paths.sound('scrollMenu'));
