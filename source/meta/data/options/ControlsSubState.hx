@@ -33,7 +33,7 @@ class ControlsSubState extends MusicBeatSubstate {
 	private static var curAlt:Bool = false;
 
 	private static var defaultKey:String = 'Reset to Default Keys';
-	private static var mobileKey:String = 'Press To Change Mobile Controls'
+	private static var mobileKey:String = 'Press To Change Mobile Controls';
 	private var bindLength:Int = 0;
 
 	var optionShit:Array<Dynamic> = [
