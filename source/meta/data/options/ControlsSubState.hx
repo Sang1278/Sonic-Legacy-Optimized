@@ -33,6 +33,7 @@ class ControlsSubState extends MusicBeatSubstate {
 	private static var curAlt:Bool = false;
 
 	private static var defaultKey:String = 'Reset to Default Keys';
+	private static var mobileKey:String = 'Press To Change Mobile Controls'
 	private var bindLength:Int = 0;
 
 	var optionShit:Array<Dynamic> = [
@@ -95,16 +96,24 @@ class ControlsSubState extends MusicBeatSubstate {
 		add(grpOptions);
 
 		optionShit.push(['']);
+		if (!ProgressionHandler.isRodent)
+ 		optionShit.push([mobileKey]);
 		optionShit.push([defaultKey]);
 
 		for (i in 0...optionShit.length) {
 			var isCentered:Bool = false;
+			if (!ProgressionHandler.isRodent) {
+      var isMobileKey:Bool = (optionShit[i][0] == mobileKey);
+			if(unselectableCheckMobile(i, true)) {
+				isCentered = true;
+			}
+	   }
 			var isDefaultKey:Bool = (optionShit[i][0] == defaultKey);
 			if(unselectableCheck(i, true)) {
 				isCentered = true;
 			}
 
-			var optionText:Alphabet = new Alphabet(0, (10 * i), optionShit[i][0], (!isCentered || isDefaultKey), false);
+			var optionText:Alphabet = new Alphabet(0, (10 * i), optionShit[i][0], (!isCentered || isDefaultKey || if (!ProgressionHandler.isRodent) || isMobileKey), false);
 			optionText.isMenuItem = true;
 			if(isCentered) {
 				optionText.screenCenter(X);
@@ -157,7 +166,16 @@ class ControlsSubState extends MusicBeatSubstate {
 			}
 
 			if(controls.ACCEPT && nextAccept <= 0) {
-				if(optionShit[curSelected][0] == defaultKey) {
+			  if (!ProgressionHandler.isRodent) {
+			   if(optionShit[curSelected][0] == mobileKey) {
+			     #if mobile
+			     removeVirtualPad();
+			     #end
+          openSubState(new mobile.MobileControlsSubState());
+					FlxG.sound.play(Paths.sound('confirmMenu'));
+			   }
+				}
+				else if(optionShit[curSelected][0] == defaultKey) {
 					ClientPrefs.keyBinds = ClientPrefs.defaultKeys.copy();
 					reloadKeys();
 					changeSelection();
@@ -289,11 +307,24 @@ class ControlsSubState extends MusicBeatSubstate {
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
 
-	private function unselectableCheck(num:Int, ?checkDefaultKey:Bool = false):Bool {
+	private function unselectableCheck(num:Int, ?checkDefaultKey:Bool = false, ?checkMobileKey:Bool = false):Bool {
 		if(optionShit[num][0] == defaultKey) {
 			return checkDefaultKey;
 		}
+
 		return optionShit[num].length < 2 && optionShit[num][0] != defaultKey;
+	}
+
+
+	private function unselectableCheckMobile(num:Int, ?checkMobileKey:Bool = false):Bool {
+
+	  if (!ProgressionHandler.isRodent) {
+		if(optionShit[num][0] == mobileKey) {
+			return checkMobileKey;
+		}
+    }
+
+		return optionShit[num].length < 2 && optionShit[num][0] != mobileKey;
 	}
 
 	private function addBindTexts(optionText:Alphabet, num:Int) {
