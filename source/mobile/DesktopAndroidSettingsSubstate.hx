@@ -32,8 +32,9 @@ import openfl.Lib;
 
 using StringTools;
 
-class DesktopAndroidSettingsSubstate extends DesktopBaseOptions
+class DesktopMobileOptions extends DesktopBaseOptions
 {
+
 	public function new()
 	{
 
