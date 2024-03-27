@@ -56,7 +56,7 @@ class MobileOptionsState extends MusicBeatState
 
 	override function create() {
 
-		FlxG.sound.playMusic(Paths.music('options'));
+		//FlxG.sound.playMusic(Paths.music('options'));
 		MainMenuState.fromTitle = false;
 
 		DiscordHandler.changePresence("Options Menu", null);
