@@ -40,7 +40,8 @@ class DesktopOptionsState extends MusicBeatState
 
     public var cmd:FlxSprite;
     var mainOptionsList:Array<Array<String>> = [["NOTES", "Change the colors of your notes ingame."], 
-    ["CONTROLS", "Change the controls used throughout the PC."], 
+    ["CONTROLS", "Change the controls used throughout the PC."],
+    ["MOBILE-CONTROLS", "Change the mobile controls."],
     ["DELAY-COMBO", "Change the delay offset and combo positions."], 
     ["GRAPHICS", "Change the graphics settings used ingame."], 
     ["VISUALS-UI", "Change the UI preferences and framerate."], 
@@ -187,7 +188,7 @@ class DesktopOptionsState extends MusicBeatState
         super.create();
 
         #if mobile
-        addVirtualPad(UP_DOWN, A_B_X_Y);
+        addVirtualPad(UP_DOWN, A_B);
         addVirtualPadCamera(false);
         #end
 
@@ -233,25 +234,6 @@ class DesktopOptionsState extends MusicBeatState
 
     override function update(elapsed:Float) {
         super.update(elapsed);
-
-    #if mobile
-		if (virtualPad.buttonX.justPressed)
-		{
-	
-			removeVirtualPad();
-	                            for (camera in [display,camCRT,FlxG.camera]){
-                                    FlxTween.tween(FlxG.camera, {alpha: 0}, 1, {ease: FlxEase.cubeIn});
-                                    FlxTween.tween(newCursor, {alpha: 0}, 1, {ease: FlxEase.cubeIn});
-                                    FlxTween.tween(camera, {zoom: 4}, 1, {ease: FlxEase.cubeIn, onComplete: Void -> {
-			openSubState(new mobile.MobileControlsSubState());
-                                }});
-                            }
-		}
-		if (virtualPad.buttonY.justPressed) {
-			removeVirtualPad();
-			openSubState(new mobile.DesktopAndroidSettingsSubstate());
-		}
-		#end
 
         newCursor.setPosition(FlxG.mouse.x, FlxG.mouse.y);
 
@@ -324,6 +306,11 @@ class DesktopOptionsState extends MusicBeatState
                                         openSubState(new meta.data.options.ControlsSubState());
                                 }});
                             }
+                        case "MOBILE-CONTROLS":
+                        #if mobile
+                        removeVirtualPad();
+                      #end
+                      openSubState(new mobile.DesktopMobileOptions());
                         case "DELAY-COMBO":
                         #if mobile
                         removeVirtualPad();
