@@ -41,7 +41,6 @@ class DesktopOptionsState extends MusicBeatState
     public var cmd:FlxSprite;
     var mainOptionsList:Array<Array<String>> = [["NOTES", "Change the colors of your notes ingame."], 
     ["CONTROLS", "Change the controls used throughout the PC."],
-    ["MOBILE-CONTROLS", "Change the mobile controls."],
     ["DELAY-COMBO", "Change the delay offset and combo positions."], 
     ["GRAPHICS", "Change the graphics settings used ingame."], 
     ["VISUALS-UI", "Change the UI preferences and framerate."], 
@@ -306,11 +305,6 @@ class DesktopOptionsState extends MusicBeatState
                                         openSubState(new meta.data.options.ControlsSubState());
                                 }});
                             }
-                        case "MOBILE-CONTROLS":
-                        #if mobile
-                        removeVirtualPad();
-                      #end
-                      openSubState(new mobile.DesktopMobileOptions());
                         case "DELAY-COMBO":
                         #if mobile
                         removeVirtualPad();
