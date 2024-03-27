@@ -74,7 +74,22 @@ class ControlsSubState extends MusicBeatSubstate {
 		super();
 
 			#if mobile
+			if(!ProgressionHandler.isRodent) {
 			addVirtualPad(LEFT_FULL, A_B);
+			}else{
+			addVirtualPad(LEFT_FULL, A_B_X_Y);
+		var sus:FlxText = new FlxText(10, 14, 0, 'Press X to customize your android controls', 16);
+		sus.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		sus.borderSize = 2.4;
+		sus.scrollFactor.set();
+		add(sus); //sus??!?!
+		
+		var sussy:FlxText = new FlxText(10, 32, 0, 'Press Y to customize opacity for your android controls', 16);
+		sussy.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		sussy.borderSize = 2.4;
+		sussy.scrollFactor.set();
+		add(sussy); //even more sus!
+			}
       addVirtualPadCamera(false);
 			#end
 
@@ -131,6 +146,18 @@ class ControlsSubState extends MusicBeatSubstate {
 	var leaving:Bool = false;
 	var bindingTime:Float = 0;
 	override function update(elapsed:Float) {
+    #if mobile
+		if (virtualPad.buttonX.justPressed)
+		{
+			removeVirtualPad();
+			openSubState(new mobile.MobileControlsSubState());
+		}
+		if (virtualPad.buttonY.justPressed) {
+			removeVirtualPad();
+			openSubState(new mobile.AndroidSettingsSubState());
+		}
+		#end
+
 		if(!rebindingKey) {
 			if (controls.UI_UP_P) {
 				changeSelection(-1);
