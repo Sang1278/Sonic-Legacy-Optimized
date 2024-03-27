@@ -18,7 +18,7 @@ class DesktopNoteSettingsSubstate extends DesktopBaseOptions {
 
         //odd
         var option:DesktopOption = new DesktopOption('Customize',
-            'Change your note colours\n[Press Enter]',
+            'Change your note colours\n[Press A]',
             'swapNoteOption',
             'button',
         true);
