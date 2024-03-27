@@ -112,7 +112,7 @@ class MobileOptionsState extends MusicBeatState
 
 		if (controls.BACK) {
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			else MusicBeatState.switchState(new DesktopOptionsState());
+		  MusicBeatState.switchState(new DesktopOptionsState());
 		}
 
 		if (controls.ACCEPT) {
