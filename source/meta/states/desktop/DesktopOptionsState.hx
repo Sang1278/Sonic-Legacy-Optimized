@@ -187,7 +187,7 @@ class DesktopOptionsState extends MusicBeatState
         super.create();
 
         #if mobile
-        addVirtualPad(UP_DOWN, A_B);
+        addVirtualPad(UP_DOWN, A_B_C);
         addVirtualPadCamera(false);
         #end
 
@@ -233,6 +233,12 @@ class DesktopOptionsState extends MusicBeatState
 
     override function update(elapsed:Float) {
         super.update(elapsed);
+
+     if (virtualPad.buttonC.justPressed) {
+                         FlxTransitionableState.skipNextTransIn = true;
+                    FlxTransitionableState.skipNextTransOut = true;
+                    LoadingState.loadAndSwitchState(new mobile.MobileOptionsState());
+     }
 
         newCursor.setPosition(FlxG.mouse.x, FlxG.mouse.y);
 
