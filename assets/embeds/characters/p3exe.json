@@ -71,21 +71,6 @@
 			],
 			"loop": true,
 			"fps": 24,
-			"anim": "",
-			"indices": [],
-			"name": ""
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"cameraOffset": [
-				0,
-				0
-			],
-			"loop": true,
-			"fps": 24,
 			"anim": "idle",
 			"indices": [],
 			"name": "idle"
@@ -94,10 +79,9 @@
 	"no_antialiasing": false,
 	"image": "characters/p3sonic",
 	"position": [
-		-70,
-		130
+		80,
+		280
 	],
-	"pauseDuringSustains": false,
 	"healthicon": "p3",
 	"flip_x": false,
 	"healthbar_colors": [
@@ -106,9 +90,9 @@
 		178
 	],
 	"camera_position": [
-		0,
-		40
+		40,
+		-10
 	],
 	"sing_duration": 6.1,
-	"scale": 0.8
+	"scale": 1.6
 }
