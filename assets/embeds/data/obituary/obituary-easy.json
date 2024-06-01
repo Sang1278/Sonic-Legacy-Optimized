@@ -7514,7 +7514,7 @@
 		"events": [],
 		"player3": null,
 		"song": "Obituary",
-		"needsVoices": true,
+		"needsVoices": false,
 		"stage": "obituary",
 		"validScore": true,
 		"bpm": 95,

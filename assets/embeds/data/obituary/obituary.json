@@ -7954,7 +7954,7 @@
 		"song": "Obituary",
 		"validScore": true,
 		"stage": "obituary",
-		"needsVoices": true,
+		"needsVoices": false,
 		"speed": 2.3,
 		"bpm": 101
 	}
