@@ -3315,7 +3315,7 @@
 		"player3": null,
 		"splashSkin": "noteSplashes",
 		"song": "2torial",
-		"needsVoices": true,
+		"needsVoices": false,
 		"arrowSkin": "",
 		"validScore": true,
 		"stage": "greenhill",
