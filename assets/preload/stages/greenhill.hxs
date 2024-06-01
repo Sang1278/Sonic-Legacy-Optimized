@@ -1,28 +1,13 @@
 var camTwn:FlxTween = null;
 
 function onLoad(){
-    var greenHillSky:BGSprite = new BGSprite('stages/bg-greenhill/Sky', -485, -600, 0.0, 0.0);
-    greenHillSky.setGraphicSize(Std.int(greenHillSky.width * 2.0));
+    var greenHillSky:BGSprite = new BGSprite('stages/bg-greenhill/Sky', -570, -470, 0.0, 0.0);
+    greenHillSky.setGraphicSize(Std.int(greenHillSky.width * 3.2));
     greenHillSky.updateHitbox();
     add(greenHillSky);
-
-    var greenHillClouds:BGSprite = new BGSprite('stages/bg-greenhill/Clouds', -607, -335, 0.05, 0.05);
-    greenHillClouds.setGraphicSize(Std.int(greenHillClouds.width * 2.0));
-    greenHillClouds.updateHitbox();
-    add(greenHillClouds);
-
-    var greenHillMountians:BGSprite = new BGSprite('stages/bg-greenhill/Moutians', -589, -190, 0.10, 0.10);
-    greenHillMountians.setGraphicSize(Std.int(greenHillMountians.width * 1.75));
-    greenHillMountians.updateHitbox();
-    add(greenHillMountians);
-
-    var greenHillWater:BGSprite = new BGSprite('stages/bg-greenhill/Water', -633, 235, 0.2, 0.2);
-    greenHillWater.setGraphicSize(Std.int(greenHillWater.width * 2.0));
-    greenHillWater.updateHitbox();
-    add(greenHillWater);
-
-    var greenhillLand:BGSprite = new BGSprite('stages/bg-greenhill/Ground', -1048, -200, 1, 1);
-    greenhillLand.setGraphicSize(Std.int(greenhillLand.width * 1.75));
+    
+    var greenhillLand:BGSprite = new BGSprite('stages/bg-greenhill/Ground', -870, -150, 1, 1);
+    greenhillLand.setGraphicSize(Std.int(greenhillLand.width * 3.2));
     greenhillLand.updateHitbox();
     add(greenhillLand);
 
@@ -35,8 +20,8 @@ function onLoad(){
     greenhillRings.updateHitbox();
     add(greenhillRings);
 
-    var greenHillRocks:BGSprite = new BGSprite('stages/bg-greenhill/Foreground', -1029, 225, 1.25, 1.25);
-    greenHillRocks.setGraphicSize(Std.int(greenHillRocks.width * 2.5));
+    var greenHillRocks:BGSprite = new BGSprite('stages/bg-greenhill/Foreground', -1070, 50, 1.3, 1.3);
+    greenHillRocks.setGraphicSize(Std.int(greenHillRocks.width * 6));
     greenHillRocks.updateHitbox();
     foreground.add(greenHillRocks);
 }

@@ -113,17 +113,12 @@ function onEvent(eventName, value1, value2){
 
 
 function addBG() {
-    addObject('whatsupthesky',0.825,[0.4,0.4],'xy',[-100,0],false,1);
 
-    addObject1('biggerbackrocks','bgFiles',0.825,[0.5,0.5],'xy',[0,0],false,1,12);
-    
-    addObject1('backrocks','bgFiles',0.825,[0.5,0.5],'xy',[-50,0],false,1,12);
+    addObject1('biggerbackrocks','bgFiles',4,[0.5,0.5],'xy',[0,0],false,1,12);
 
-    addObject1('agua','waterfall',0.825,[0.5,0.5],'xy',[0,0],false,1,12);
+    addObject1('agua','agua',3.2,[0.5,0.5],'xy',[0,0],false,1,12);
 
-    addObject1('mmmpalms','bgFiles',0.825,[0.85,0.85],'xy',[0,0],false,1,12);
-
-    addObject1('ground','bgFiles',0.825,[1,1],'x',[0,500],false,1,12);
+    addObject1('ground','bgFiles',4,[1,1],'x',[0,500],false,1,12);
 
     introAnim = new FlxSprite(-22,362);
     introAnim.frames = Paths.getSparrowAtlas('stages/obituary/p1/Sonic_Turn');
@@ -137,27 +132,11 @@ function addBG() {
     }
     foreground.add(introAnim);
 
-    addObject1('frontobjects','bgFiles',1,[1.25,1.25],'x',[210 + 150,400],true,1,12);
+    addObject1('frontobjects','bgFiles',4.4,[1.25,1.25],'x',[210 + 150,400],true,1,12);
 }
 
 
 //quick and dirty setup
-function addObject(path:String,scale:Float,scrollF:Array<Float>,centerAxis:String,offsets:Array<Float>,isForeground:Bool,phase:Int) {
-    var dir = 'obituary';
-    if (phase == 1) dir = 'sunset'; 
-    var f = new FlxSprite().loadGraphic(Paths.image('stages/' + dir + '/' + path));
-    ObjectTools.setScale(f,scale);
-    f.scrollFactor.set(scrollF[0],scrollF[1]);
-    if (centerAxis == 'x') f.screenCenter(FlxAxes.X);
-    else if (centerAxis == 'y') f.screenCenter(FlxAxes.Y);
-    else if (centerAxis == 'xy') f.screenCenter();
-    f.x += offsets[0];
-    f.y += offsets[1];
-    if (isForeground) foreground.add(f);
-    else add(f);
-    grp.push(f);
-    f.antialiasing = ClientPrefs.data.antialiasing;
-}
 
 function addObject1(image:String,path:String,scale:Float,scrollF:Array<Float>,centerAxis:String,offsets:Array<Float>,isForeground:Bool,phase:Int,fps:Int) {
     var dir = 'obituary';
